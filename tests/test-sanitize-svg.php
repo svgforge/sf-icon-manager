@@ -33,6 +33,7 @@ final class Test_Icon_Library_Sanitize_Svg extends WP_UnitTestCase
 
     public function test_self_closing_script_is_removed(): void
     {
+        // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript -- Test fixture: the string is malicious SVG input under test, not an enqueued asset.
         $svg = '<svg><script src="https://evil.example/x.js"/><symbol id="a"></symbol></svg>';
         $clean = sfim_sanitize_svg($svg);
 

@@ -29,7 +29,7 @@ final class Test_Icon_Library_Admin_Security extends WP_UnitTestCase
     private function throw_on_redirect(): void
     {
         add_filter('wp_redirect', static function ($location) {
-            throw new WPDieException((string) $location);
+            throw new WPDieException(esc_url((string) $location));
         });
     }
 
