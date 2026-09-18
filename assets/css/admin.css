@@ -1,0 +1,44 @@
+.sf-icon-manager-sprite__group-heading {
+	margin-top: 1.5em;
+}
+
+.sf-icon-manager-sprite {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 12px;
+	margin: 0;
+	list-style: none;
+}
+
+.sf-icon-manager-sprite li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 8px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.sf-icon-manager-sprite__icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 64px;
+	height: 64px;
+}
+
+.sf-icon-manager-sprite__icon svg {
+	width: 48px;
+	height: 48px;
+	max-width: 100%;
+}
+
+.sf-icon-manager-sprite__name {
+	font-size: 12px;
+	color: #50575e;
+	text-align: center;
+	word-break: break-all;
+}

@@ -25,6 +25,33 @@ function sfim_register_settings_page(): void
 add_action('admin_menu', 'sfim_register_settings_page');
 
 /**
+ * Enqueues the admin stylesheet on the plugin's settings page.
+ */
+function sfim_admin_assets(): void
+{
+    $screen = get_current_screen();
+
+    if (null === $screen || 'settings_page_sf-icon-manager' !== $screen->id) {
+        return;
+    }
+
+    $path = dirname(SFIM_PLUGIN_FILE) . '/assets/css/admin.css';
+
+    if (! is_file($path)) {
+        return;
+    }
+
+    wp_register_style(
+        'sf-icon-manager-admin',
+        plugins_url('assets/css/admin.css', SFIM_PLUGIN_FILE),
+        [],
+        (string) @filemtime($path),
+    );
+    wp_enqueue_style('sf-icon-manager-admin');
+}
+add_action('admin_enqueue_scripts', 'sfim_admin_assets');
+
+/**
  * Redirects back to the settings page after an action.
  *
  * @param string $message Key of the message to display.
@@ -604,15 +631,6 @@ function sfim_sprite_preview_panel(): void
     $sprite     = sfim_current_sprite();
     $sprite_url = sfim_sprite_url();
     $symbols    = function_exists('sfim_sprite_symbols') ? sfim_sprite_symbols() : [];
-
-    echo '<style>';
-    echo '.sf-icon-manager-sprite__group-heading{margin-top:1.5em}';
-    echo '.sf-icon-manager-sprite{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:0;list-style:none}';
-    echo '.sf-icon-manager-sprite li{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 8px;background:#fff;border:1px solid #dcdcde;border-radius:4px;box-shadow:0 1px 1px rgba(0,0,0,.04)}';
-    echo '.sf-icon-manager-sprite__icon{display:flex;align-items:center;justify-content:center;width:64px;height:64px}';
-    echo '.sf-icon-manager-sprite__icon svg{width:48px;height:48px;max-width:100%}';
-    echo '.sf-icon-manager-sprite__name{font-size:12px;color:#50575e;text-align:center;word-break:break-all}';
-    echo '</style>';
 
     if ($symbols === []) {
         echo '<div class="notice notice-info"><p>';
