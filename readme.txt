@@ -5,7 +5,7 @@ Tags: svg, icons, sprite, gutenberg
 Requires at least: 6.6
 Tested up to: 7.1.1
 Requires PHP: 8.3
-Stable tag: 0.3.1
+Stable tag: 0.3.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
