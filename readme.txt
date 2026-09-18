@@ -3,9 +3,9 @@ Authors: wpdynamics
 Contributors: wpdynamics
 Tags: svg, icons, sprite, gutenberg
 Requires at least: 6.6
-Tested up to: 7.1.1
+Tested up to: 7.1
 Requires PHP: 8.3
-Stable tag: 0.3.2
+Stable tag: 0.3.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
