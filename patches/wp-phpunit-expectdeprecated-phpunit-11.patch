@@ -1,0 +1,23 @@
+--- a/includes/abstract-testcase.php
++++ b/includes/abstract-testcase.php
+@@ -587,12 +587,18 @@
+ 		if ( method_exists( $this, 'getAnnotations' ) ) {
+ 			// PHPUnit < 9.5.0.
+ 			$annotations = $this->getAnnotations();
+-		} else {
+-			// PHPUnit >= 9.5.0.
++		} elseif ( method_exists( \PHPUnit\Util\Test::class, 'parseTestMethodAnnotations' ) ) {
++			// PHPUnit 9.5.0 - 10.x.
+ 			$annotations = \PHPUnit\Util\Test::parseTestMethodAnnotations(
+ 				static::class,
+ 				$this->getName( false )
+ 			);
++		} else {
++			// PHPUnit >= 11.0.0 removed the annotation parsing API.
++			$annotations = array(
++				'class'  => array(),
++				'method' => array(),
++			);
+ 		}
+ 
+ 		foreach ( array( 'class', 'method' ) as $depth ) {

@@ -6,7 +6,9 @@
 	"license": "MIT",
 	"main": "build/index.js",
 	"files": [
+		"assets",
 		"build",
+		"composer.json",
 		"languages/*.pot",
 		"src/admin",
 		"src/native",

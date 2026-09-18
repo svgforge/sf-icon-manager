@@ -25,7 +25,7 @@ final class Test_Icon_Library_Sprite_Symbols extends WP_UnitTestCase
     protected function tearDown(): void
     {
         if ($this->temp !== '') {
-            @unlink($this->temp);
+            wp_delete_file($this->temp);
         }
 
         parent::tearDown();
