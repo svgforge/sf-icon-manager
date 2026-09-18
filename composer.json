@@ -23,10 +23,11 @@
 		"enshrined/svg-sanitize": "^1.0"
 	},
 	"require-dev": {
+		"cweagans/composer-patches": "^2.0",
 		"laravel/pint": "^1.32",
 		"php-stubs/wordpress-stubs": "^7.1",
-		"phpunit/phpunit": "^9.6",
-		"wp-phpunit/wp-phpunit": "^6.6",
+		"phpunit/phpunit": "^12.0",
+		"wp-phpunit/wp-phpunit": "^7.1",
 		"yoast/phpunit-polyfills": "^4.0"
 	},
 	"extra": {
@@ -34,6 +35,11 @@
 			"wp-content/plugins/{$name}/": [
 				"type:wordpress-plugin"
 			]
+		},
+		"patches": {
+			"wp-phpunit/wp-phpunit": {
+				"Fix expectDeprecated() on PHPUnit >= 11": "patches/wp-phpunit-expectdeprecated-phpunit-11.patch"
+			}
 		}
 	},
 	"scripts": {
@@ -44,7 +50,8 @@
 	"config": {
 		"sort-packages": true,
 		"allow-plugins": {
-			"composer/installers": true
+			"composer/installers": true,
+			"cweagans/composer-patches": true
 		}
 	}
 }

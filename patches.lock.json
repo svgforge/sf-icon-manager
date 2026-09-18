@@ -1,0 +1,17 @@
+{
+    "_hash": "9711eaf5288d75d9cd9f796d7a04a769f3f8b3c79826e8d7e1ec0527148b3c91",
+    "patches": {
+        "wp-phpunit/wp-phpunit": [
+            {
+                "package": "wp-phpunit/wp-phpunit",
+                "description": "Fix expectDeprecated() on PHPUnit >= 11",
+                "url": "patches/wp-phpunit-expectdeprecated-phpunit-11.patch",
+                "sha256": "c43fac2727d6584a4a23fc498905a0a50c56e23b48ccb23a5d735371840efe63",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}
