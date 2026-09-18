@@ -8,6 +8,7 @@
 	"files": [
 		"assets",
 		"build",
+		"composer.json",
 		"languages/*.pot",
 		"src/admin",
 		"src/native",
