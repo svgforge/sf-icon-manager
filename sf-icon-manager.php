@@ -3,7 +3,7 @@
 /**
  * Plugin Name:       SVG Forge Icon Manager
  * Description:       Gutenberg block that inserts SVG icons from a sprite file (ico.svg) via <use> and links them.
- * Version:           0.3.3
+ * Version:           0.3.4
  * Requires at least: 6.6
  * Requires PHP:      8.3
  * Author:            svgforge
