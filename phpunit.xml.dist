@@ -8,7 +8,7 @@
 	failOnRisky="true"
 	cacheDirectory=".phpunit.cache">
 	<testsuites>
-		<testsuite name="Icon Library">
+		<testsuite name="SVG Forge Icon Manager">
 			<file>tests/Test_Icon_Library_Admin_Security.php</file>
 			<file>tests/Test_Icon_Library_Attribute_Resolvers.php</file>
 			<file>tests/Test_Icon_Library_Block_Render.php</file>

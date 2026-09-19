@@ -1,6 +1,6 @@
-# Icon Library – API Reference
+# SVG Forge Icon Manager – API Reference
 
-Public PHP functions, filters, and constants exposed by the Icon Library plugin.
+Public PHP functions, filters, and constants exposed by the SVG Forge Icon Manager plugin.
 
 ---
 
@@ -29,7 +29,7 @@ Resolves the active SVG sprite source. This is the core function that determines
 | Priority | Source | Condition |
 |----------|--------|-----------|
 | 1 | Filter `sfim_sprite_url` | Non-empty string returned |
-| 2 | Uploaded file (Settings → Icon Library) | Valid `sfim_sprite` option |
+| 2 | Uploaded file (Settings → SVG Forge Icon Manager) | Valid `sfim_sprite` option |
 | 3 | Bundled fallback `sprite.svg` | File exists in plugin root |
 | 4 | No sprite | — |
 

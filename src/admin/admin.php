@@ -370,7 +370,7 @@ function sfim_settings_panel(): void
 
         <h2 style="margin-bottom:0"><?php echo esc_html__('SVG fragment library', 'sf-icon-manager'); ?></h2>
         <p class="description" style="margin-top:.5em">
-            <?php echo esc_html__('Upload an SVG sprite file that serves as the central icon library for the SVG Icon block.', 'sf-icon-manager'); ?>
+            <?php echo esc_html__('Upload an SVG sprite file that serves as the central SVG Forge Icon Manager for the SVG Icon block.', 'sf-icon-manager'); ?>
             <?php echo esc_html__('Each icon is a <symbol id="my-icon" viewBox="0 0 24 24">…</symbol> element.', 'sf-icon-manager'); ?>
         </p>
 <?php if (function_exists('wp_register_icon_collection')) : ?>

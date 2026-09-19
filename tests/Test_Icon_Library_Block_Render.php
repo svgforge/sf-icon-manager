@@ -7,7 +7,7 @@
  */
 
 /**
- * Tests for the Icon Library "SVG Icon" block render callback.
+ * Tests for the SVG Forge Icon Manager "SVG Icon" block render callback.
  */
 final class Test_Icon_Library_Block_Render extends WP_UnitTestCase
 {

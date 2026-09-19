@@ -6,7 +6,7 @@
 	"title": "SVG Icon",
 	"category": "widgets",
 	"icon": "format-image",
-	"description": "Inserts an SVG icon from the plugin icon library and can be linked.",
+	"description": "Inserts an SVG icon from the plugin SVG Forge Icon Manager and can be linked.",
 	"keywords": [ "icon", "svg", "symbol", "sprite" ],
 	"textdomain": "sf-icon-manager",
 	"supports": {

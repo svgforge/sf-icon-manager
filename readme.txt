@@ -13,9 +13,9 @@ SVG Icon Block: inserts icons from your own SVG sprite via <use>, can link them.
 
 == Description ==
 
-The Icon Library Block loads a central SVG sprite file (by default the bundled `sprite.svg`), shows all contained `<symbol>` elements in a convenient picker and inserts the selected icon as `<svg><use href="/wp-content/plugins/sf-icon-manager/sprite.svg#symbol-id">` into your content.
+The SVG Forge Icon Manager Block loads a central SVG sprite file (by default the bundled `sprite.svg`), shows all contained `<symbol>` elements in a convenient picker and inserts the selected icon as `<svg><use href="/wp-content/plugins/sf-icon-manager/sprite.svg#symbol-id">` into your content.
 
-The SVG fragment is rendered on the server, so visitors receive fast, static HTML with no extra requests and no JavaScript on the frontend. Since you own the sprite file, every icon stays small, cacheable and fully under your control — exactly the way a hand-built icon set should be maintained.
+The SVG sprite is a static [SVG fragment](https://css-tricks.com/svg-symbol-good-choice-icons/) file loaded by the browser via `<use>` — no JS on the frontend. Since you own the sprite file, every icon stays small, cacheable and fully under your control — exactly the way a hand-built icon set should be maintained.
 
 = Who is this plugin for? =
 
@@ -27,7 +27,9 @@ The fragment approach has advantages when you run a real sprite pipeline:
 
 * Full SVG via `<use>`: stroke-based icons, gradients, `currentColor`, inline styles and custom `viewBox` values survive. WordPress 7.1's sanitizer only allows `<svg>`, `<path>` and `<polygon>` (no `stroke`, no inline styles) and therefore breaks many stroke-based icon sets.
 * Reuse existing sprites: generate a sprite with svgforge-cli (sanitization + svgo optimization) and upload it — no per-icon PHP code required.
+* **Need a sprite?** Learn step by step how to build your own custom SVG icon set: [Creating custom icon sets with svgforge-cli](https://svgforge.github.io/blog/posts/custom-icon-sets/).
 * One file: the sprite is a single cacheable file that lives in the theme repo and is versioned with Git.
+* Cache friendly: the sprite is one static SVG file, so the browser caches it once and every icon on the whole site reuses that cached file — no per-icon HTTP requests.
 * Control per block: fill and stroke colours, size (standard Dimensions panel with preset slider + custom input), links with `rel` handling and aria-labels — per icon instance, without touching a stylesheet.
 * Also runs on WordPress versions before 7.1 (from 6.6).
 
@@ -38,7 +40,7 @@ Limitations you should know about:
 
 = Features =
 
-* Settings page (Settings → Icon Library) to upload the SVG sprite file — svgforge-cli handles full sanitization and svgo optimization, the plugin strips scripts, event handlers and `javascript:` links as a safety net.
+* Settings page (Settings → SVG Forge Icon Manager) to upload the SVG sprite file — svgforge-cli handles full sanitization and svgo optimization, the plugin strips scripts, event handlers and `javascript:` links as a safety net.
 * Theme override via the `sfim_sprite_url` filter (e.g. `get_theme_file_uri()`) – the filter has priority over everything.
 * Symbol picker in the editor with a live preview of all icons from the sprite; icons from sprite subdirectories (IDs like `directory--filename`) are grouped and selectable via a filter in the dropdown.
 * Icons can be linked (new tab + rel attributes including noopener/noreferrer).
@@ -52,7 +54,7 @@ Limitations you should know about:
 The SVG sprite file is resolved in this order (first existing source wins):
 
 1. Filter `sfim_sprite_url` – the canonical override (has priority).
-2. Uploaded file from Settings → Icon Library (backend upload).
+2. Uploaded file from Settings → SVG Forge Icon Manager (backend upload).
 3. Fallback: `sprite.svg` in the plugin directory.
 
 Override with a filter (recommended, versionable with the theme) in the theme's `functions.php`:
@@ -63,20 +65,20 @@ or point it at a CDN:
 
     add_filter( 'sfim_sprite_url', fn () => 'https://cdn.example.com/icons/ico.svg' );
 
-Icon Library is a developer-focused Gutenberg block that arranges a curated set of SVG icons as one central sprite and reuses them everywhere in your content. It works with any symbol sprite produced by modern build tools, is fully translated, and gives you precise control over colours, size, links and accessibility on every single block instance. The plugin prefers simplicity and performance: no tracking, no external requests, no page-weight overhead, and no vendor lock-in to a particular icon pack or service.
+SVG Forge Icon Manager is a developer-focused Gutenberg block that arranges a curated set of SVG icons as one central sprite and reuses them everywhere in your content. It works with any symbol sprite produced by modern build tools, is fully translated, and gives you precise control over colours, size, links and accessibility on every single block instance. The plugin prefers simplicity and performance: no tracking, no third-party requests, no page-weight overhead, and no vendor lock-in to a particular icon pack or service.
 
 == Installation ==
 
 1. Upload the plugin folder to `/wp-content/plugins/` (or install the ZIP via Plugins → Add New).
 2. Activate the plugin under "Plugins".
-3. Upload the sprite file (`ico.svg` with `<symbol id="...">` elements) via **Settings → Icon Library** or reference your own file with the `sfim_sprite_url` filter.
+3. Upload the sprite file (`ico.svg` with `<symbol id="...">` elements) via **Settings → SVG Forge Icon Manager** or reference your own file with the `sfim_sprite_url` filter.
 4. In the editor, add the "SVG Icon" block and choose an icon.
 
 == Frequently Asked Questions ==
 
 = Where do the icons come from? =
 
-From the central sprite file `ico.svg`. Each icon is a `<symbol id="my-icon" viewBox="0 0 24 24">…</symbol>` element. The file is rendered server-side and loaded via `fetch` in the editor.
+From the central sprite file `ico.svg`. Each icon is a `<symbol id="my-icon" viewBox="0 0 24 24">…</symbol>` element. The sprite is a static [SVG fragment](https://css-tricks.com/svg-symbol-good-choice-icons/) file that the browser loads as a regular SVG fragment.
 
 = Why not simply use the native SVG icons of WordPress 7.1? =
 
@@ -90,18 +92,16 @@ Yes. The frontend markup is generated server-side in `render.php`; the built JS 
 
 Put the block's color settings into your theme's `theme.json`:
 
-[sourcecode]
-{
-    "version": 3,
-    "settings": {
-        "blocks": {
-            "sf-icon-manager/svg-icon": {
-                "color": { "custom": false, "palette": [] }
+    {
+        "version": 3,
+        "settings": {
+            "blocks": {
+                "sf-icon-manager/svg-icon": {
+                    "color": { "custom": false, "palette": [] }
+                }
             }
         }
     }
-}
-[/sourcecode]
 
 That removes the standard Gutenberg Color/Background panels for the SVG Icon block. As in the core Icon block, multi-color icons (e.g. Tango icon sets) keep their baked-in colors and are not affected by the color controls; monochrome icons follow the chosen color.
 
@@ -109,24 +109,22 @@ That removes the standard Gutenberg Color/Background panels for the SVG Icon blo
 
 The size is the standard Gutenberg Dimensions panel (`supports.dimensions.width`, like the core Icon block): the block is square, and size presets are standard theme.json `dimensionSizes` per block:
 
-[sourcecode]
-{
-    "version": 3,
-    "settings": {
-        "blocks": {
-            "sf-icon-manager/svg-icon": {
-                "dimensions": {
-                    "dimensionSizes": [
-                        { "name": "S", "slug": "s", "size": "32px" },
-                        { "name": "L", "slug": "l", "size": "64px" }
-                    ],
-                    "width": true
+    {
+        "version": 3,
+        "settings": {
+            "blocks": {
+                "sf-icon-manager/svg-icon": {
+                    "dimensions": {
+                        "dimensionSizes": [
+                            { "name": "S", "slug": "s", "size": "32px" },
+                            { "name": "L", "slug": "l", "size": "64px" }
+                        ],
+                        "width": true
+                    }
                 }
             }
         }
     }
-}
-[/sourcecode]
 
 With presets the panel shows a slider that moves across the preset sizes, like the core Icon block. A toggle next to it switches to a custom value input with a slider, using the allowed units (`spacing.units`). `dimensions.width: false` disables sizing entirely, so the block always renders at its default size.
 
@@ -139,6 +137,23 @@ With presets the panel shows a slider that moves across the preset sizes, like t
 Development is done on [GitHub](https://github.com/svgforge/sf-icon-manager).
 
 == Changelog ==
+
+= 0.3.4 =
+* Readme: clarified that the sprite is a static SVG fragment file loaded by the browser via `<use>` (no JS on the frontend), added the custom icon sets tutorial link and a "Cache friendly" selling point.
+* High-resolution plugin screenshot.
+
+= 0.3.3 =
+* `Tested up to: 7.1` (wp.org plugin check rejects minor versions).
+
+= 0.3.2 =
+* Admin stylesheet enqueued via `wp_enqueue_style`.
+* `composer.json` ships in the plugin ZIP (required when `vendor/` exists).
+* Test suite upgraded to WordPress 7.1.1 with PHPUnit 12.
+
+= 0.3.1 =
+* Admin UI branded as "SVG Forge Icon Manager" (settings menu, page title, native icons collection label); translations regenerated.
+* `/i.svg` no longer cached immutably: the local-file branch revalidates on every request (`no-cache, must-revalidate`) with real `304 Not Modified` responses, so sprite changes are picked up immediately.
+* TypeScript sources, test files and type declarations no longer ship in the production plugin ZIP.
 
 = 0.3.0 =
 * Short URL `/i.svg` for the sprite, opt-in via the `sfim_short_url` filter.

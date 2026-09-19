@@ -25,6 +25,14 @@ wp i18n make-mo languages
 wp i18n make-json languages/sf-icon-manager-<locale>.po languages --pretty-print
 ```
 
+`wp i18n make-json` **rewrites the source `.po`**: it extracts the strings that only occur in the editor script (`build/block/index.js`) into the `.json` and removes them from the `.po` (72 → 60 entries). Keep the committed `.po` complete by restoring those `build/block/index.js:1` entries from git after running `make-json`:
+
+```bash
+git checkout -- languages/sf-icon-manager-<locale>.po
+```
+
+(Only undo the PO rewrite; keep the generated `.json` and the freshly compiled `.mo`.)
+
 Commit the generated `.pot`, `.po`, `.mo` and `.json` files.
 
 ## Notes

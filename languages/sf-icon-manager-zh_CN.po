@@ -1,17 +1,17 @@
-# Copyright (C) 2026 svgforge
-# This file is distributed under the MIT.
 msgid ""
 msgstr ""
 "Project-Id-Version: SVG Forge Icon Manager 0.3.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sf-icon-manager\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: svgforge <https://github.com/svgforge>\n"
+"Language-Team: Chinese (China)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-09-19T14:08:52+02:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"PO-Revision-Date: 2026-09-19 14:45+0200\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: sf-icon-manager\n"
 
 #. Plugin Name of the plugin
 #: sf-icon-manager.php
@@ -20,311 +20,310 @@ msgstr ""
 #: src/admin/admin.php:288
 #: src/native/icons.php:411
 msgid "SVG Forge Icon Manager"
-msgstr ""
+msgstr "SVG Forge 图标管理器"
 
 #. Description of the plugin
 #: sf-icon-manager.php
 msgid "Gutenberg block that inserts SVG icons from a sprite file (ico.svg) via <use> and links them."
-msgstr ""
+msgstr "通过 <use> 从雪碧图文件（ico.svg）插入 SVG 图标并为其添加链接的古腾堡区块。"
 
 #. Author of the plugin
 #: sf-icon-manager.php
 msgid "svgforge"
-msgstr ""
+msgstr "svgforge"
 
 #: src/admin/admin.php:127
 #: src/admin/admin.php:223
 #: src/admin/admin.php:248
 msgid "Sorry, you are not allowed to perform this action."
-msgstr ""
+msgstr "抱歉，您无权执行此操作。"
 
 #: src/admin/admin.php:292
 msgid "Settings"
-msgstr ""
+msgstr "设置"
 
 #: src/admin/admin.php:295
 #: src/admin/admin.php:647
 msgid "Sprite preview"
-msgstr ""
+msgstr "雪碧图预览"
 
 #: src/admin/admin.php:329
 msgid "Filter sfim_sprite_url"
-msgstr ""
+msgstr "过滤器 sfim_sprite_url"
 
 #: src/admin/admin.php:333
 msgid "Upload (Settings)"
-msgstr ""
+msgstr "上传（设置）"
 
 #: src/admin/admin.php:338
 msgid "Default (sprite.svg bundled with the plugin)"
-msgstr ""
+msgstr "默认（插件自带的 sprite.svg）"
 
 #: src/admin/admin.php:343
 msgid "The SVG sprite file was uploaded and is now being used."
-msgstr ""
+msgstr "SVG 雪碧图文件已上传，现正使用。"
 
 #: src/admin/admin.php:344
 msgid "The uploaded SVG sprite file was removed."
-msgstr ""
+msgstr "已上传的 SVG 雪碧图文件已移除。"
 
 #: src/admin/admin.php:345
 msgid "Only .svg or .svgz files can be uploaded."
-msgstr ""
+msgstr "只能上传 .svg 或 .svgz 文件。"
 
 #: src/admin/admin.php:346
 msgid "The file could not be read."
-msgstr ""
+msgstr "无法读取该文件。"
 
 #: src/admin/admin.php:347
 msgid "The file is not a valid SVG file."
-msgstr ""
+msgstr "该文件不是有效的 SVG 文件。"
 
 #: src/admin/admin.php:348
 msgid "The file could not be written."
-msgstr ""
+msgstr "无法写入该文件。"
 
 #: src/admin/admin.php:349
 msgid "Uploading is disabled because the sprite file is overridden by the sfim_sprite_url filter."
-msgstr ""
+msgstr "由于雪碧图文件被 sfim_sprite_url 过滤器覆盖，上传功能已禁用。"
 
 #: src/admin/admin.php:350
 msgid "The native icon integration setting was saved."
-msgstr ""
+msgstr "原生图标集成设置已保存。"
 
 #: src/admin/admin.php:367
 msgid "The sprite file is currently overridden by the sfim_sprite_url filter. Uploading a sprite file is disabled while the filter is active."
-msgstr ""
+msgstr "雪碧图文件当前被 sfim_sprite_url 过滤器覆盖。过滤器处于启用状态时，上传雪碧图文件将被禁用。"
 
 #: src/admin/admin.php:371
 msgid "SVG fragment library"
-msgstr ""
+msgstr "SVG 片段库"
 
 #: src/admin/admin.php:373
 msgid "Upload an SVG sprite file that serves as the central SVG Forge Icon Manager for the SVG Icon block."
-msgstr ""
+msgstr "上传一个 SVG 雪碧图文件，作为 SVG Icon 区块的中央 SVG Forge 图标管理器。"
 
 #: src/admin/admin.php:374
 msgid "Each icon is a <symbol id=\"my-icon\" viewBox=\"0 0 24 24\">…</symbol> element."
-msgstr ""
+msgstr "每个图标都是一个 <symbol id=\"my-icon\" viewBox=\"0 0 24 24\">…</symbol> 元素。"
 
 #. translators: %1$d: Number of symbols registered with the native WordPress icon API.
 #: src/admin/admin.php:384
 #, php-format
 msgid "WordPress 7.1+ only: %1$d symbol is also registered in the built-in Icon block and the wp/v2 icons REST API."
 msgid_plural "WordPress 7.1+ only: these %1$d symbols are also registered in the built-in Icon block and the wp/v2 icons REST API."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "仅 WordPress 7.1+：%1$d 个符号还会注册到内置 Icon 区块和 wp/v2 icons REST API 中。"
 
 #: src/admin/admin.php:396
 msgid "WordPress 7.1+ only: the built-in Icon block is disabled. Use the SVG Icon block instead."
-msgstr ""
+msgstr "仅 WordPress 7.1+：内置 Icon 区块已禁用。请改用 SVG Icon 区块。"
 
 #: src/admin/admin.php:404
 msgid "Active sprite file"
-msgstr ""
+msgstr "当前使用的雪碧图文件"
 
 #: src/admin/admin.php:409
 msgid "Short URL:"
-msgstr ""
+msgstr "短网址："
 
 #. translators: %s: Source of the sprite URL (filter, upload, default).
 #: src/admin/admin.php:417
 #, php-format
 msgid "Source: %s"
-msgstr ""
+msgstr "来源：%s"
 
 #: src/admin/admin.php:426
 msgid "Uploaded file"
-msgstr ""
+msgstr "已上传的文件"
 
 #. translators: %1$d: Number of symbol elements, %2$s: Date of the upload.
 #: src/admin/admin.php:434
 #, php-format
 msgid "(%1$d symbols, uploaded on %2$s)"
-msgstr ""
+msgstr "（%1$d 个符号，上传于 %2$s）"
 
 #: src/admin/admin.php:445
 msgid "Remove uploaded file"
-msgstr ""
+msgstr "移除已上传的文件"
 
 #: src/admin/admin.php:455
 #: src/admin/admin.php:467
 msgid "WordPress native icon integration (experimental)"
-msgstr ""
+msgstr "WordPress 原生图标集成（实验性）"
 
 #: src/admin/admin.php:457
 msgid "Only relevant on WordPress 7.1+ which ships the built-in Icon block and the wp/v2 icons REST API. Experimental — the API and its behavior may change with core updates."
-msgstr ""
+msgstr "仅在自带内置 Icon 区块和 wp/v2 icons REST API 的 WordPress 7.1+ 上相关。实验性——API 及其行为可能随核心更新而改变。"
 
 #: src/admin/admin.php:460
 msgid "Note: the native path applies the core Icon block’s strict SVG sanitizer, so multi-color icon sets (e.g. Tango) may render incorrectly or not at all. The SVG Icon block renders sprite symbols without restrictions and is not affected."
-msgstr ""
+msgstr "注意：原生路径会套用核心 Icon 区块的严格 SVG 净化器，因此多彩图标集（如 Tango）可能显示异常或完全不显示。SVG Icon 区块不受限制地渲染雪碧图符号，因此不受影响。"
 
 #: src/admin/admin.php:473
 msgid "Off"
-msgstr ""
+msgstr "关闭"
 
 #: src/admin/admin.php:476
 msgid "Default. The plugin does not touch the WordPress icon API; the built-in Icon block stays as in core."
-msgstr ""
+msgstr "默认。该插件不会改动 WordPress 图标 API；内置 Icon 区块保持核心默认行为。"
 
 #: src/admin/admin.php:482
 msgid "Off, and hide WordPress core icon block"
-msgstr ""
+msgstr "关闭，并隐藏 WordPress 核心图标区块"
 
 #: src/admin/admin.php:485
 msgid "Like Off, but the built-in core/icon block is deregistered in the block editor and on the frontend. Use the SVG Icon block instead."
-msgstr ""
+msgstr "与“关闭”相同，但内置的 core/icon 区块会在区块编辑器和前端取消注册。请改用 SVG Icon 区块。"
 
 #: src/admin/admin.php:491
 msgid "On"
-msgstr ""
+msgstr "开启"
 
 #: src/admin/admin.php:494
 msgid "Every symbol of the configured sprite is registered as an icon in the sf-icon-manager collection — available in the built-in Icon block picker, the wp/v2 icons REST API and wp_get_icon()."
-msgstr ""
+msgstr "配置的雪碧图中的每个符号都会注册为 sf-icon-manager 集合中的一个图标——可在内置 Icon 区块选择器、wp/v2 icons REST API 和 wp_get_icon() 中使用。"
 
 #: src/admin/admin.php:501
 msgid "Save native icon settings"
-msgstr ""
+msgstr "保存原生图标设置"
 
 #: src/admin/admin.php:507
 msgid "Upload new file"
-msgstr ""
+msgstr "上传新文件"
 
 #: src/admin/admin.php:509
 msgid "An existing uploaded file is replaced by a new upload."
-msgstr ""
+msgstr "重新上传将覆盖已有文件。"
 
 #: src/admin/admin.php:518
 msgid "SVG file (ico.svg)"
-msgstr ""
+msgstr "SVG 文件（ico.svg）"
 
 #: src/admin/admin.php:522
 msgid "Only .svg and .svgz files are accepted. svgforge-cli handles full sanitization and svgo optimization; as a safety net, the plugin strips scripts, event handlers and javascript: links on upload."
-msgstr ""
+msgstr "仅接受 .svg 和 .svgz 文件。svgforge-cli 负责完整的净化和 svgo 优化；作为安全网，插件会在上传时移除脚本、事件处理程序和 javascript: 链接。"
 
 #: src/admin/admin.php:530
 msgid "Upload SVG sprite"
-msgstr ""
+msgstr "上传 SVG 雪碧图"
 
 #: src/admin/admin.php:535
 msgid "Generate a sprite with svgforge-cli"
-msgstr ""
+msgstr "使用 svgforge-cli 生成雪碧图"
 
 #. translators: %1$s: opening link to the svgforge-cli repository; %2$s: closing link tag.
 #: src/admin/admin.php:540
 #, php-format
 msgid "%1$sInstall svgforge-cli%2$s and create a symbol sprite from a folder of icons, then upload the generated SVG file."
-msgstr ""
+msgstr "%1$s安装 svgforge-cli%2$s，从图标文件夹创建符号雪碧图，然后上传生成的 SVG 文件。"
 
 #: src/admin/admin.php:549
 msgid "SVG files in subdirectories get IDs like directory--filename — each directory is then available as a filter in the icon picker."
-msgstr ""
+msgstr "子目录中的 SVG 文件会获得类似 directory--filename 的 ID——每个目录随后都会作为图标选择器中的一个过滤器可用。"
 
 #. translators: %1$s: opening link to the svgforge tutorials; %2$s: closing link tag; %3$s: opening link to the example icon set repository; %4$s: closing link tag.
 #: src/admin/admin.php:555
 #, php-format
 msgid "Tutorials: %1$ssvgforge.github.io%2$s · Example icon set with generated sprite: %3$ssvgforge/default-icons%4$s"
-msgstr ""
+msgstr "教程：%1$ssvgforge.github.io%2$s · 带生成雪碧图的示例图标集：%3$ssvgforge/default-icons%4$s"
 
 #: src/admin/admin.php:638
 msgid "No sprite is configured yet. Go to the settings tab to upload an SVG sprite file."
-msgstr ""
+msgstr "尚未配置雪碧图。请前往设置标签页上传 SVG 雪碧图文件。"
 
 #: src/admin/admin.php:640
 msgid "The configured sprite contains no symbols that can be previewed."
-msgstr ""
+msgstr "配置的雪碧图中没有可预览的符号。"
 
 #. translators: %1$d: Number of previewed symbols, %2$s: Active sprite URL.
 #: src/admin/admin.php:651
 #, php-format
 msgid "%1$d symbols in the active sprite (%2$s)."
-msgstr ""
+msgstr "当前雪碧图中有 %1$d 个符号（%2$s）。"
 
 #: src/block/render.php:49
 #: build/block/index.js:1
 msgid "Select symbol …"
-msgstr ""
+msgstr "选择符号…"
 
 #: src/native/icons.php:412
 msgid "Icons from the configured SVG sprite."
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Could not load the icon sprite"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "All"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Replace"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Insert/edit link"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Remove link"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "SVG"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Aria label (for screen readers, when not linked)"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Sets the aria-label on the SVG. For links the aria-label is set on the <a>."
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Select symbol"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "View"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Grid"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "List"
-msgstr ""
+msgstr "来自所配置 SVG 雪碧图的图标。"
 
 #: src/block/block.json
 msgctxt "block title"
 msgid "SVG Icon"
-msgstr ""
+msgstr "SVG 图标"
 
 #: src/block/block.json
 msgctxt "block description"
 msgid "Inserts an SVG icon from the plugin SVG Forge Icon Manager and can be linked."
-msgstr ""
+msgstr "从插件 SVG Forge 图标管理器插入 SVG 图标，并可添加链接。"
 
 #: src/block/block.json
 msgctxt "block keyword"
 msgid "icon"
-msgstr ""
+msgstr "图标"
 
 #: src/block/block.json
 msgctxt "block keyword"
 msgid "svg"
-msgstr ""
+msgstr "svg"
 
 #: src/block/block.json
 msgctxt "block keyword"
 msgid "symbol"
-msgstr ""
+msgstr "符号"
 
 #: src/block/block.json
 msgctxt "block keyword"
 msgid "sprite"
-msgstr ""
+msgstr "雪碧图"
+
+#: build/block/index.js:1
+msgid "Could not load the icon sprite"
+msgstr "无法加载图标雪碧图"
+
+#: build/block/index.js:1
+msgid "All"
+msgstr "全部"
+
+#: build/block/index.js:1
+msgid "Replace"
+msgstr "替换"
+
+#: build/block/index.js:1
+msgid "Insert/edit link"
+msgstr "插入/编辑链接"
+
+#: build/block/index.js:1
+msgid "Remove link"
+msgstr "移除链接"
+
+#: build/block/index.js:1
+msgid "SVG"
+msgstr "SVG"
+
+#: build/block/index.js:1
+msgid "Aria label (for screen readers, when not linked)"
+msgstr "Aria 标签（供屏幕阅读器使用，未添加链接时）"
+
+#: build/block/index.js:1
+msgid "Sets the aria-label on the SVG. For links the aria-label is set on the <a>."
+msgstr "在 SVG 上设置 aria-label。对于链接，aria-label 设置在 <a> 上。"
+
+#: build/block/index.js:1
+msgid "Select symbol"
+msgstr "选择符号"
+
+#: build/block/index.js:1
+msgid "View"
+msgstr "视图"
+
+#: build/block/index.js:1
+msgid "Grid"
+msgstr "网格"
+
+#: build/block/index.js:1
+msgid "List"
+msgstr "列表"

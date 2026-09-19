@@ -2,9 +2,9 @@
 
 Gutenberg plugin that inserts SVG icons from a central SVG sprite file (`ico.svg`) via `<use>` and links them. The sprite file can be uploaded directly from a settings page as an SVG fragment library or [theme override](#override-with-a-filter-recommended-git-versionable).
 
-**This plugin is only useful for advanced theme and plugin developers who manage their own SVG sprite file.** It is not an icon library manager: there is no UI to collect, organize or import individual icons — every icon must first exist as a `<symbol>` in a sprite file you own, build and version. The editor's symbol picker (see screenshot) then lets you select icons from that sprite simply by clicking and browsing.
+**This plugin is only useful for advanced theme and plugin developers who manage their own SVG sprite file.** It is not an SVG Forge Icon Manager manager: there is no UI to collect, organize or import individual icons — every icon must first exist as a `<symbol>` in a sprite file you own, build and version. The editor's symbol picker (see screenshot) then lets you select icons from that sprite simply by clicking and browsing.
 
-![Icon Library](docs/screen.png)
+![SVG Forge Icon Manager](docs/screen.png)
 
 ## WordPress 7.1 already has SVG icons — why this plugin?
 
@@ -13,10 +13,12 @@ Since WordPress 7.1, core ships its own icon system: `wp_register_icon_collectio
 The fragment approach of this plugin still has advantages when you run a real sprite pipeline:
 
 - **Full SVG survives.** The browser loads the `<symbol>` from the sprite and renders it via `<use>` unmodified — stroke-based icons, gradients, `currentColor`, inline styles and custom `viewBox` values all work. WordPress 7.1's sanitizer is intentionally strict (`<svg>/<path>/<polygon>` only, no `stroke`, no inline styles) and breaks most stroke-based icon sets.
-- **Reuse existing assets.** Upload a sprite you already have (or generate one with a CLI tool like [svgforge-cli](https://github.com/svgforge/svgforge-cli/) — no per-icon PHP code required.
+- **Reuse existing assets.** Upload a sprite you already have (or generate one with a CLI tool like [svgforge-cli](https://github.com/svgforge/svgforge-cli/) — no per-icon PHP code required).
+- **Need a sprite?** Learn step by step how to build your own custom SVG icon set in the tutorial: [Creating custom icon sets with svgforge-cli](https://svgforge.github.io/blog/posts/custom-icon-sets/).
 - **Icon Groups.** Icons can be grouped, so you can find the icon you need much easier.
 - **One file.** The sprite is a single cacheable file that can live in your theme repo and is versioned with Git.
-- **Per-block control.** Fill *and* stroke colours, size (standard Dimensions panel with preset slider + custom input), links with `rel` handlingWordPress and aria-labels — per instance, without touching a stylesheet.
+- **Cache friendly.** The sprite is one static SVG file, so the browser caches it once and every icon on the whole site reuses that cached file — no per-icon HTTP requests.
+- **Per-block control.** Fill *and* stroke colours, size (standard Dimensions panel with preset slider + custom input), links with `rel` handling and aria-labels — per instance, without touching a stylesheet.
 - **Works on WordPress < 7.1.** The plugin supports 6.6+, so it works where the native API does not exist yet.
 
 Honest limitations:
@@ -26,7 +28,7 @@ Honest limitations:
 
 ## Features
 
-- Settings page (Settings → Icon Library) for uploading the SVG sprite file, including sanitization of scripts and event handlers
+- Settings page (Settings → SVG Forge Icon Manager) for uploading the SVG sprite file, including sanitization of scripts and event handlers
 - Symbol picker in the editor with a live preview of all `<symbol>` elements from the sprite
 - Icons can be linked (new tab with `noopener`/`noreferrer`)
 - Aria-label for screen readers
@@ -43,7 +45,7 @@ Honest limitations:
 
 1. Upload the plugin folder to `/wp-content/plugins/` (or install the ZIP from a GitHub release)
 2. Activate the plugin
-3. Under **Settings → Icon Library**, upload the `ico.svg` file containing `<symbol id="my-icon" viewBox="0 0 24 24">…</symbol>` elements (or configure another source, see below)
+3. Under **Settings → SVG Forge Icon Manager**, upload the `ico.svg` file containing `<symbol id="my-icon" viewBox="0 0 24 24">…</symbol>` elements (or configure another source, see below)
 4. In the editor, add the "SVG Icon" block and choose an icon
 
 Composer users should read [Composer installation](docs/composer-installation.md).
