@@ -62,6 +62,9 @@ jobs:
             - name: Build plugin ZIP
               run: pnpm run plugin-zip
 
+            - name: Prune dev dependencies before deploy
+              run: composer install --no-dev --no-interaction --prefer-dist --no-progress
+
             - name: Resolve plugin version
               id: version
               run: echo "version=$(sed -n 's/^Stable tag:[[:space:]]*//p' readme.txt)" >> "$GITHUB_OUTPUT"
