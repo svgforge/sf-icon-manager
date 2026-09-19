@@ -8,9 +8,9 @@ on:
     workflow_dispatch:
         inputs:
             tag_name:
-                description: 'Git tag to attach the GitHub release to'
+                description: 'Git tag whose release ZIP should be deployed'
                 required: false
-                default: 'v0.2.0'
+                default: 'v0.3.3'
                 type: string
 
 permissions:
@@ -28,6 +28,7 @@ jobs:
                   fetch-depth: 0
 
             - name: Setup PHP
+              if: ${{ startsWith(github.ref, 'refs/tags/') }}
               uses: shivammathur/setup-php@v2
               with:
                   php-version: '8.4'
@@ -36,31 +37,44 @@ jobs:
                   tools: composer:v2
 
             - name: Install PHP dependencies (runtime only)
+              if: ${{ startsWith(github.ref, 'refs/tags/') }}
               run: composer install --no-dev --no-interaction --prefer-dist --no-progress
 
             - name: Setup pnpm
+              if: ${{ startsWith(github.ref, 'refs/tags/') }}
               uses: pnpm/action-setup@v6
 
             - name: Setup Node.js
+              if: ${{ startsWith(github.ref, 'refs/tags/') }}
               uses: actions/setup-node@v7
               with:
                   node-version: 24
                   cache: pnpm
 
             - name: Install dependencies
+              if: ${{ startsWith(github.ref, 'refs/tags/') }}
               run: pnpm install --frozen-lockfile
 
             - name: Lint, typecheck and unit tests
+              if: ${{ startsWith(github.ref, 'refs/tags/') }}
               run: |
                   pnpm lint:js
                   pnpm run typecheck
                   pnpm run test-unit-js
 
             - name: Build plugin
+              if: ${{ startsWith(github.ref, 'refs/tags/') }}
               run: pnpm run build
 
             - name: Build plugin ZIP
+              if: ${{ startsWith(github.ref, 'refs/tags/') }}
               run: pnpm run plugin-zip
+
+            - name: Download release ZIP
+              if: ${{ github.event_name == 'workflow_dispatch' }}
+              env:
+                  GH_TOKEN: ${{ github.token }}
+              run: gh release download "${{ inputs.tag_name }}" --pattern "sf-icon-manager.zip" --dir "$GITHUB_WORKSPACE"
 
             - name: Prepare deploy contents from plugin ZIP
               run: |
