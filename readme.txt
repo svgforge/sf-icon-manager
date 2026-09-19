@@ -13,7 +13,7 @@ SVG Icon Block: inserts icons from your own SVG sprite via <use>, can link them.
 
 == Description ==
 
-The Icon Library Block loads a central SVG sprite file (by default the bundled `sprite.svg`), shows all contained `<symbol>` elements in a convenient picker and inserts the selected icon as `<svg><use href="/wp-content/plugins/sf-icon-manager/sprite.svg#symbol-id">` into your content.
+The SVG Forge Icon Manager Block loads a central SVG sprite file (by default the bundled `sprite.svg`), shows all contained `<symbol>` elements in a convenient picker and inserts the selected icon as `<svg><use href="/wp-content/plugins/sf-icon-manager/sprite.svg#symbol-id">` into your content.
 
 The SVG fragment is rendered on the server, so visitors receive fast, static HTML with no extra requests and no JavaScript on the frontend. Since you own the sprite file, every icon stays small, cacheable and fully under your control — exactly the way a hand-built icon set should be maintained.
 
@@ -38,7 +38,7 @@ Limitations you should know about:
 
 = Features =
 
-* Settings page (Settings → Icon Library) to upload the SVG sprite file — svgforge-cli handles full sanitization and svgo optimization, the plugin strips scripts, event handlers and `javascript:` links as a safety net.
+* Settings page (Settings → SVG Forge Icon Manager) to upload the SVG sprite file — svgforge-cli handles full sanitization and svgo optimization, the plugin strips scripts, event handlers and `javascript:` links as a safety net.
 * Theme override via the `sfim_sprite_url` filter (e.g. `get_theme_file_uri()`) – the filter has priority over everything.
 * Symbol picker in the editor with a live preview of all icons from the sprite; icons from sprite subdirectories (IDs like `directory--filename`) are grouped and selectable via a filter in the dropdown.
 * Icons can be linked (new tab + rel attributes including noopener/noreferrer).
@@ -52,7 +52,7 @@ Limitations you should know about:
 The SVG sprite file is resolved in this order (first existing source wins):
 
 1. Filter `sfim_sprite_url` – the canonical override (has priority).
-2. Uploaded file from Settings → Icon Library (backend upload).
+2. Uploaded file from Settings → SVG Forge Icon Manager (backend upload).
 3. Fallback: `sprite.svg` in the plugin directory.
 
 Override with a filter (recommended, versionable with the theme) in the theme's `functions.php`:
@@ -63,13 +63,13 @@ or point it at a CDN:
 
     add_filter( 'sfim_sprite_url', fn () => 'https://cdn.example.com/icons/ico.svg' );
 
-Icon Library is a developer-focused Gutenberg block that arranges a curated set of SVG icons as one central sprite and reuses them everywhere in your content. It works with any symbol sprite produced by modern build tools, is fully translated, and gives you precise control over colours, size, links and accessibility on every single block instance. The plugin prefers simplicity and performance: no tracking, no external requests, no page-weight overhead, and no vendor lock-in to a particular icon pack or service.
+SVG Forge Icon Manager is a developer-focused Gutenberg block that arranges a curated set of SVG icons as one central sprite and reuses them everywhere in your content. It works with any symbol sprite produced by modern build tools, is fully translated, and gives you precise control over colours, size, links and accessibility on every single block instance. The plugin prefers simplicity and performance: no tracking, no external requests, no page-weight overhead, and no vendor lock-in to a particular icon pack or service.
 
 == Installation ==
 
 1. Upload the plugin folder to `/wp-content/plugins/` (or install the ZIP via Plugins → Add New).
 2. Activate the plugin under "Plugins".
-3. Upload the sprite file (`ico.svg` with `<symbol id="...">` elements) via **Settings → Icon Library** or reference your own file with the `sfim_sprite_url` filter.
+3. Upload the sprite file (`ico.svg` with `<symbol id="...">` elements) via **Settings → SVG Forge Icon Manager** or reference your own file with the `sfim_sprite_url` filter.
 4. In the editor, add the "SVG Icon" block and choose an icon.
 
 == Frequently Asked Questions ==

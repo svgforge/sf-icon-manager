@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: SVG Forge Icon Manager 0.3.0\n"
+"Project-Id-Version: SVG Forge Icon Manager 0.3.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sf-icon-manager\n"
 "Last-Translator: svgforge <https://github.com/svgforge>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-15T15:30:07+02:00\n"
-"PO-Revision-Date: 2026-09-11 09:31+0200\n"
+"POT-Creation-Date: 2026-09-18T11:08:19+02:00\n"
+"PO-Revision-Date: 2026-09-19 13:40+0200\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Domain: sf-icon-manager\n"
@@ -91,7 +91,7 @@ msgid "SVG fragment library"
 msgstr "SVG-Fragment-Bibliothek"
 
 #: src/admin/admin.php:346
-msgid "Upload an SVG sprite file that serves as the central icon library for the SVG Icon block."
+msgid "Upload an SVG sprite file that serves as the central SVG Forge Icon Manager for the SVG Icon block."
 msgstr "Lade eine SVG-Sprite-Datei hoch, die als zentrale Symbol-Bibliothek für den Block „SVG Icon“ dient."
 
 #: src/admin/admin.php:347
@@ -240,7 +240,7 @@ msgstr "SVG Icon"
 #: build/block/block.json
 #: src/block/block.json
 msgctxt "block description"
-msgid "Inserts an SVG icon from the plugin icon library and can be linked."
+msgid "Inserts an SVG icon from the plugin SVG Forge Icon Manager and can be linked."
 msgstr "Fügt ein SVG-Icon aus der Plugin-Icon-Bibliothek ein und kann verlinkt werden."
 
 #: build/block/block.json
@@ -281,57 +281,57 @@ msgstr "SVG Forge Icon Manager"
 #, php-format
 msgid "WordPress 7.1+ only: %1$d symbol is also registered in the built-in Icon block and the wp/v2 icons REST API."
 msgid_plural "WordPress 7.1+ only: these %1$d symbols are also registered in the built-in Icon block and the wp/v2 icons REST API."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nur WordPress 7.1+: %1$d Symbol wird zusätzlich im eingebauten Icon-Block und in der wp/v2-Icons-REST-API registriert."
+msgstr[1] "Nur WordPress 7.1+: %1$d Symbole werden zusätzlich im eingebauten Icon-Block und in der wp/v2-Icons-REST-API registriert."
 
 #: src/admin/admin.php:382
 msgid "Short URL:"
-msgstr ""
+msgstr "Kurz-URL:"
 
 #: build/block/index.js:1
 msgid "Could not load the icon sprite"
-msgstr ""
+msgstr "Icon-Sprite konnte nicht geladen werden"
 
 #: build/block/index.js:1
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 #: build/block/index.js:1
 msgid "Replace"
-msgstr ""
+msgstr "Ersetzen"
 
 #: build/block/index.js:1
 msgid "Insert/edit link"
-msgstr ""
+msgstr "Link einfügen/bearbeiten"
 
 #: build/block/index.js:1
 msgid "Remove link"
-msgstr ""
+msgstr "Link entfernen"
 
 #: build/block/index.js:1
 msgid "SVG"
-msgstr ""
+msgstr "SVG"
 
 #: build/block/index.js:1
 msgid "Aria label (for screen readers, when not linked)"
-msgstr ""
+msgstr "Aria-Label (für Screenreader, wenn nicht verlinkt)"
 
 #: build/block/index.js:1
 msgid "Sets the aria-label on the SVG. For links the aria-label is set on the <a>."
-msgstr ""
+msgstr "Setzt das aria-label auf dem SVG. Bei Links wird das aria-label auf dem <a> gesetzt."
 
 #: build/block/index.js:1
 msgid "Select symbol"
-msgstr ""
+msgstr "Symbol wählen"
 
 #: build/block/index.js:1
 msgid "View"
-msgstr ""
+msgstr "Ansicht"
 
 #: build/block/index.js:1
 msgid "Grid"
-msgstr ""
+msgstr "Raster"
 
 #: build/block/index.js:1
 msgid "List"
-msgstr ""
+msgstr "Liste"

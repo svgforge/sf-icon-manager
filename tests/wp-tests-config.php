@@ -1,7 +1,7 @@
 <?php
 
 /**
- * WordPress tests configuration for Icon Library.
+ * WordPress tests configuration for SVG Forge Icon Manager.
  *
  * Environment variables override the defaults.
  *
@@ -12,8 +12,8 @@ $table_prefix = 'wptests_';
 
 define('WP_TESTS_DOMAIN', getenv('WP_TESTS_DOMAIN') ?: 'sf-icon-manager.test');
 define('WP_TESTS_EMAIL', 'admin@example.test');
-define('WP_TESTS_TITLE', 'Icon Library Tests');
-define('WP_TESTS_NETWORK_TITLE', 'Icon Library Tests Network');
+define('WP_TESTS_TITLE', 'SVG Forge Icon Manager Tests');
+define('WP_TESTS_NETWORK_TITLE', 'SVG Forge Icon Manager Tests Network');
 define('WP_TESTS_SUBDOMAIN_INSTALL', true);
 define('WP_PHP_BINARY', getenv('WP_PHP_BINARY') ?: PHP_BINARY);
 $base = '/';

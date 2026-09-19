@@ -53,7 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] - 2026-09-12
 
-- WordPress 7.1+ support (experimental): a new setting on the Icon Library settings page controls whether your uploaded sprite icons are also usable in WordPress's built-in Icon block, or only in this plugin's SVG Icon block. Options: `off` (default — icons are only available in the SVG Icon block), `on` (the sprite icons are also registered for the core Icon block), `no_block` (same as `on`, but the core Icon block is additionally fully removed, so the SVG Icon block remains the only icon block).
+- WordPress 7.1+ support (experimental): a new setting on the SVG Forge Icon Manager settings page controls whether your uploaded sprite icons are also usable in WordPress's built-in Icon block, or only in this plugin's SVG Icon block. Options: `off` (default — icons are only available in the SVG Icon block), `on` (the sprite icons are also registered for the core Icon block), `no_block` (same as `on`, but the core Icon block is additionally fully removed, so the SVG Icon block remains the only icon block).
 - Icon picker opens as a modal via a new "Replace" toolbar button (like the core Icon block) instead of the sidebar dropdown.
 - Colors panel respects `theme.json` (`color.custom` / `color.palette`) and hides automatically for multi-color icons (e.g. Tango sets); fill and stroke remain separate.
 - SVG Icon (`<use>`) keep rendering unrestricted in the SVG Icon block — the native path applies core's strict sanitizer.
