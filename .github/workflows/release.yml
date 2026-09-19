@@ -62,6 +62,12 @@ jobs:
             - name: Build plugin ZIP
               run: pnpm run plugin-zip
 
+            - name: Prepare deploy contents from plugin ZIP
+              run: |
+                  rm -rf "$GITHUB_WORKSPACE/deploy"
+                  mkdir -p "$GITHUB_WORKSPACE/deploy"
+                  unzip -q "$GITHUB_WORKSPACE/${{ github.event.repository.name }}.zip" -d "$GITHUB_WORKSPACE/deploy"
+
             - name: Resolve plugin version
               id: version
               run: echo "version=$(sed -n 's/^Stable tag:[[:space:]]*//p' readme.txt)" >> "$GITHUB_OUTPUT"
@@ -72,6 +78,7 @@ jobs:
               with:
                   generate-zip: true
               env:
+                  BUILD_DIR: ${{ github.workspace }}/deploy/sf-icon-manager
                   VERSION: ${{ steps.version.outputs.version }}
                   SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
                   SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
