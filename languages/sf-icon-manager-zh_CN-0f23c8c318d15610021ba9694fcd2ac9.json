@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2026-09-19 13:40+0200",
+    "translation-revision-date": "2026-09-19 14:45+0200",
     "generator": "WP-CLI\/2.12.0",
     "source": "build\/block\/index.js",
     "domain": "messages",
@@ -7,47 +7,47 @@
         "messages": {
             "": {
                 "domain": "messages",
-                "lang": "de_DE",
-                "plural-forms": "nplurals=2; plural=(n != 1);"
+                "lang": "zh_CN",
+                "plural-forms": "nplurals=1; plural=0;"
             },
             "Select symbol \u2026": [
-                "Symbol w\u00e4hlen \u2026"
+                "\u9009\u62e9\u7b26\u53f7\u2026"
             ],
             "Could not load the icon sprite": [
-                "Icon-Sprite konnte nicht geladen werden"
+                "\u65e0\u6cd5\u52a0\u8f7d\u56fe\u6807\u96ea\u78a7\u56fe"
             ],
             "All": [
-                "Alle"
+                "\u5168\u90e8"
             ],
             "Replace": [
-                "Ersetzen"
+                "\u66ff\u6362"
             ],
             "Insert\/edit link": [
-                "Link einf\u00fcgen\/bearbeiten"
+                "\u63d2\u5165\/\u7f16\u8f91\u94fe\u63a5"
             ],
             "Remove link": [
-                "Link entfernen"
+                "\u79fb\u9664\u94fe\u63a5"
             ],
             "SVG": [
                 "SVG"
             ],
             "Aria label (for screen readers, when not linked)": [
-                "Aria-Label (f\u00fcr Screenreader, wenn nicht verlinkt)"
+                "Aria \u6807\u7b7e\uff08\u4f9b\u5c4f\u5e55\u9605\u8bfb\u5668\u4f7f\u7528\uff0c\u672a\u6dfb\u52a0\u94fe\u63a5\u65f6\uff09"
             ],
             "Sets the aria-label on the SVG. For links the aria-label is set on the <a>.": [
-                "Setzt das aria-label auf dem SVG. Bei Links wird das aria-label auf dem <a> gesetzt."
+                "\u5728 SVG \u4e0a\u8bbe\u7f6e aria-label\u3002\u5bf9\u4e8e\u94fe\u63a5\uff0caria-label \u8bbe\u7f6e\u5728 <a> \u4e0a\u3002"
             ],
             "Select symbol": [
-                "Symbol w\u00e4hlen"
+                "\u9009\u62e9\u7b26\u53f7"
             ],
             "View": [
-                "Ansicht"
+                "\u89c6\u56fe"
             ],
             "Grid": [
-                "Raster"
+                "\u7f51\u683c"
             ],
             "List": [
-                "Liste"
+                "\u5217\u8868"
             ]
         }
     }

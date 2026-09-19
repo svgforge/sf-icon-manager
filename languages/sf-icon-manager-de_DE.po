@@ -92,7 +92,7 @@ msgstr "SVG-Fragment-Bibliothek"
 
 #: src/admin/admin.php:346
 msgid "Upload an SVG sprite file that serves as the central SVG Forge Icon Manager for the SVG Icon block."
-msgstr "Lade eine SVG-Sprite-Datei hoch, die als zentrale Symbol-Bibliothek für den Block „SVG Icon“ dient."
+msgstr "Lade eine SVG-Sprite-Datei hoch, die als zentraler SVG Forge Icon Manager für den Block „SVG Icon“ dient."
 
 #: src/admin/admin.php:347
 msgid "Each icon is a <symbol id=\"my-icon\" viewBox=\"0 0 24 24\">…</symbol> element."
@@ -241,7 +241,7 @@ msgstr "SVG Icon"
 #: src/block/block.json
 msgctxt "block description"
 msgid "Inserts an SVG icon from the plugin SVG Forge Icon Manager and can be linked."
-msgstr "Fügt ein SVG-Icon aus der Plugin-Icon-Bibliothek ein und kann verlinkt werden."
+msgstr "Fügt ein SVG-Icon aus dem SVG Forge Icon Manager des Plugins ein und kann verlinkt werden."
 
 #: build/block/block.json
 #: src/block/block.json

@@ -1,17 +1,17 @@
-# Copyright (C) 2026 svgforge
-# This file is distributed under the MIT.
 msgid ""
 msgstr ""
 "Project-Id-Version: SVG Forge Icon Manager 0.3.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sf-icon-manager\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: svgforge <https://github.com/svgforge>\n"
+"Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-09-19T14:08:52+02:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"PO-Revision-Date: 2026-09-19 14:10+0200\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: sf-icon-manager\n"
 
 #. Plugin Name of the plugin
 #: sf-icon-manager.php
@@ -20,311 +20,311 @@ msgstr ""
 #: src/admin/admin.php:288
 #: src/native/icons.php:411
 msgid "SVG Forge Icon Manager"
-msgstr ""
+msgstr "SVG Forge Icon Manager"
 
 #. Description of the plugin
 #: sf-icon-manager.php
 msgid "Gutenberg block that inserts SVG icons from a sprite file (ico.svg) via <use> and links them."
-msgstr ""
+msgstr "Bloque de Gutenberg que inserta iconos SVG de un archivo sprite (ico.svg) mediante <use> y permite enlazarlos."
 
 #. Author of the plugin
 #: sf-icon-manager.php
 msgid "svgforge"
-msgstr ""
+msgstr "svgforge"
 
 #: src/admin/admin.php:127
 #: src/admin/admin.php:223
 #: src/admin/admin.php:248
 msgid "Sorry, you are not allowed to perform this action."
-msgstr ""
+msgstr "Lo sentimos, no tienes permiso para realizar esta acción."
 
 #: src/admin/admin.php:292
 msgid "Settings"
-msgstr ""
+msgstr "Ajustes"
 
 #: src/admin/admin.php:295
 #: src/admin/admin.php:647
 msgid "Sprite preview"
-msgstr ""
+msgstr "Vista previa del sprite"
 
 #: src/admin/admin.php:329
 msgid "Filter sfim_sprite_url"
-msgstr ""
+msgstr "Filtro sfim_sprite_url"
 
 #: src/admin/admin.php:333
 msgid "Upload (Settings)"
-msgstr ""
+msgstr "Subir (ajustes)"
 
 #: src/admin/admin.php:338
 msgid "Default (sprite.svg bundled with the plugin)"
-msgstr ""
+msgstr "Predeterminado (sprite.svg incluido con el plugin)"
 
 #: src/admin/admin.php:343
 msgid "The SVG sprite file was uploaded and is now being used."
-msgstr ""
+msgstr "El archivo sprite SVG se subió y ahora se está usando."
 
 #: src/admin/admin.php:344
 msgid "The uploaded SVG sprite file was removed."
-msgstr ""
+msgstr "El archivo sprite SVG subido se eliminó."
 
 #: src/admin/admin.php:345
 msgid "Only .svg or .svgz files can be uploaded."
-msgstr ""
+msgstr "Solo se pueden subir archivos .svg o .svgz."
 
 #: src/admin/admin.php:346
 msgid "The file could not be read."
-msgstr ""
+msgstr "El archivo no se pudo leer."
 
 #: src/admin/admin.php:347
 msgid "The file is not a valid SVG file."
-msgstr ""
+msgstr "El archivo no es un archivo SVG válido."
 
 #: src/admin/admin.php:348
 msgid "The file could not be written."
-msgstr ""
+msgstr "El archivo no se pudo escribir."
 
 #: src/admin/admin.php:349
 msgid "Uploading is disabled because the sprite file is overridden by the sfim_sprite_url filter."
-msgstr ""
+msgstr "La subida está deshabilitada porque el filtro sfim_sprite_url anula el archivo sprite."
 
 #: src/admin/admin.php:350
 msgid "The native icon integration setting was saved."
-msgstr ""
+msgstr "Se guardó el ajuste de integración nativa de iconos."
 
 #: src/admin/admin.php:367
 msgid "The sprite file is currently overridden by the sfim_sprite_url filter. Uploading a sprite file is disabled while the filter is active."
-msgstr ""
+msgstr "El archivo sprite está actualmente anulado por el filtro sfim_sprite_url. La subida de un archivo sprite está deshabilitada mientras el filtro esté activo."
 
 #: src/admin/admin.php:371
 msgid "SVG fragment library"
-msgstr ""
+msgstr "Biblioteca de fragmentos SVG"
 
 #: src/admin/admin.php:373
 msgid "Upload an SVG sprite file that serves as the central SVG Forge Icon Manager for the SVG Icon block."
-msgstr ""
+msgstr "Sube un archivo sprite SVG que sirva como administrador central de iconos SVG Forge para el bloque SVG Icon."
 
 #: src/admin/admin.php:374
 msgid "Each icon is a <symbol id=\"my-icon\" viewBox=\"0 0 24 24\">…</symbol> element."
-msgstr ""
+msgstr "Cada icono es un elemento <symbol id=\"my-icon\" viewBox=\"0 0 24 24\">…</symbol>."
 
 #. translators: %1$d: Number of symbols registered with the native WordPress icon API.
 #: src/admin/admin.php:384
 #, php-format
 msgid "WordPress 7.1+ only: %1$d symbol is also registered in the built-in Icon block and the wp/v2 icons REST API."
 msgid_plural "WordPress 7.1+ only: these %1$d symbols are also registered in the built-in Icon block and the wp/v2 icons REST API."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Solo WordPress 7.1+: %1$d símbolo también está registrado en el bloque Icon integrado y en la API REST de iconos wp/v2."
+msgstr[1] "Solo WordPress 7.1+: estos %1$d símbolos también están registrados en el bloque Icon integrado y en la API REST de iconos wp/v2."
 
 #: src/admin/admin.php:396
 msgid "WordPress 7.1+ only: the built-in Icon block is disabled. Use the SVG Icon block instead."
-msgstr ""
+msgstr "Solo WordPress 7.1+: el bloque Icon integrado está deshabilitado. Usa el bloque SVG Icon en su lugar."
 
 #: src/admin/admin.php:404
 msgid "Active sprite file"
-msgstr ""
+msgstr "Archivo sprite activo"
 
 #: src/admin/admin.php:409
 msgid "Short URL:"
-msgstr ""
+msgstr "URL corta:"
 
 #. translators: %s: Source of the sprite URL (filter, upload, default).
 #: src/admin/admin.php:417
 #, php-format
 msgid "Source: %s"
-msgstr ""
+msgstr "Fuente: %s"
 
 #: src/admin/admin.php:426
 msgid "Uploaded file"
-msgstr ""
+msgstr "Archivo subido"
 
 #. translators: %1$d: Number of symbol elements, %2$s: Date of the upload.
 #: src/admin/admin.php:434
 #, php-format
 msgid "(%1$d symbols, uploaded on %2$s)"
-msgstr ""
+msgstr "(%1$d símbolos, subidos el %2$s)"
 
 #: src/admin/admin.php:445
 msgid "Remove uploaded file"
-msgstr ""
+msgstr "Eliminar archivo subido"
 
 #: src/admin/admin.php:455
 #: src/admin/admin.php:467
 msgid "WordPress native icon integration (experimental)"
-msgstr ""
+msgstr "Integración nativa de iconos de WordPress (experimental)"
 
 #: src/admin/admin.php:457
 msgid "Only relevant on WordPress 7.1+ which ships the built-in Icon block and the wp/v2 icons REST API. Experimental — the API and its behavior may change with core updates."
-msgstr ""
+msgstr "Solo relevante en WordPress 7.1+, que incluye el bloque Icon integrado y la API REST de iconos wp/v2. Experimental: la API y su comportamiento pueden cambiar con las actualizaciones del núcleo."
 
 #: src/admin/admin.php:460
 msgid "Note: the native path applies the core Icon block’s strict SVG sanitizer, so multi-color icon sets (e.g. Tango) may render incorrectly or not at all. The SVG Icon block renders sprite symbols without restrictions and is not affected."
-msgstr ""
+msgstr "Nota: la vía nativa aplica el saneador SVG estricto del bloque Icon del núcleo, por lo que los conjuntos de iconos multicolor (p. ej. Tango) pueden renderizarse incorrectamente o no hacerlo en absoluto. El bloque SVG Icon renderiza los símbolos del sprite sin restricciones y no se ve afectado."
 
 #: src/admin/admin.php:473
 msgid "Off"
-msgstr ""
+msgstr "Desactivado"
 
 #: src/admin/admin.php:476
 msgid "Default. The plugin does not touch the WordPress icon API; the built-in Icon block stays as in core."
-msgstr ""
+msgstr "Predeterminado. El plugin no toca la API de iconos de WordPress; el bloque Icon integrado permanece como en el núcleo."
 
 #: src/admin/admin.php:482
 msgid "Off, and hide WordPress core icon block"
-msgstr ""
+msgstr "Desactivado y ocultar el bloque de iconos del núcleo de WordPress"
 
 #: src/admin/admin.php:485
 msgid "Like Off, but the built-in core/icon block is deregistered in the block editor and on the frontend. Use the SVG Icon block instead."
-msgstr ""
+msgstr "Igual que Desactivado, pero el bloque core/icon integrado se da de baja en el editor de bloques y en el frontend. Usa el bloque SVG Icon en su lugar."
 
 #: src/admin/admin.php:491
 msgid "On"
-msgstr ""
+msgstr "Activado"
 
 #: src/admin/admin.php:494
 msgid "Every symbol of the configured sprite is registered as an icon in the sf-icon-manager collection — available in the built-in Icon block picker, the wp/v2 icons REST API and wp_get_icon()."
-msgstr ""
+msgstr "Cada símbolo del sprite configurado se registra como icono en la colección sf-icon-manager — disponible en el selector del bloque Icon integrado, la API REST de iconos wp/v2 y wp_get_icon()."
 
 #: src/admin/admin.php:501
 msgid "Save native icon settings"
-msgstr ""
+msgstr "Guardar ajustes de iconos nativos"
 
 #: src/admin/admin.php:507
 msgid "Upload new file"
-msgstr ""
+msgstr "Subir un archivo nuevo"
 
 #: src/admin/admin.php:509
 msgid "An existing uploaded file is replaced by a new upload."
-msgstr ""
+msgstr "Un archivo subido existente se reemplaza con una subida nueva."
 
 #: src/admin/admin.php:518
 msgid "SVG file (ico.svg)"
-msgstr ""
+msgstr "Archivo SVG (ico.svg)"
 
 #: src/admin/admin.php:522
 msgid "Only .svg and .svgz files are accepted. svgforge-cli handles full sanitization and svgo optimization; as a safety net, the plugin strips scripts, event handlers and javascript: links on upload."
-msgstr ""
+msgstr "Solo se aceptan archivos .svg y .svgz. svgforge-cli se encarga del saneado completo y la optimización svgo; como red de seguridad, el plugin elimina scripts, controladores de eventos y enlaces javascript: al subir."
 
 #: src/admin/admin.php:530
 msgid "Upload SVG sprite"
-msgstr ""
+msgstr "Subir sprite SVG"
 
 #: src/admin/admin.php:535
 msgid "Generate a sprite with svgforge-cli"
-msgstr ""
+msgstr "Generar un sprite con svgforge-cli"
 
 #. translators: %1$s: opening link to the svgforge-cli repository; %2$s: closing link tag.
 #: src/admin/admin.php:540
 #, php-format
 msgid "%1$sInstall svgforge-cli%2$s and create a symbol sprite from a folder of icons, then upload the generated SVG file."
-msgstr ""
+msgstr "%1$sInstala svgforge-cli%2$s y crea un sprite de símbolos desde una carpeta de iconos, después sube el archivo SVG generado."
 
 #: src/admin/admin.php:549
 msgid "SVG files in subdirectories get IDs like directory--filename — each directory is then available as a filter in the icon picker."
-msgstr ""
+msgstr "Los archivos SVG de los subdirectorios obtienen identificadores como directorio--nombre-archivo — cada directorio estará entonces disponible como filtro en el selector de iconos."
 
 #. translators: %1$s: opening link to the svgforge tutorials; %2$s: closing link tag; %3$s: opening link to the example icon set repository; %4$s: closing link tag.
 #: src/admin/admin.php:555
 #, php-format
 msgid "Tutorials: %1$ssvgforge.github.io%2$s · Example icon set with generated sprite: %3$ssvgforge/default-icons%4$s"
-msgstr ""
+msgstr "Tutoriales: %1$ssvgforge.github.io%2$s · Conjunto de iconos de ejemplo con sprite generado: %3$ssvgforge/default-icons%4$s"
 
 #: src/admin/admin.php:638
 msgid "No sprite is configured yet. Go to the settings tab to upload an SVG sprite file."
-msgstr ""
+msgstr "Aún no hay ningún sprite configurado. Ve a la pestaña de ajustes para subir un archivo sprite SVG."
 
 #: src/admin/admin.php:640
 msgid "The configured sprite contains no symbols that can be previewed."
-msgstr ""
+msgstr "El sprite configurado no contiene símbolos que se puedan previsualizar."
 
 #. translators: %1$d: Number of previewed symbols, %2$s: Active sprite URL.
 #: src/admin/admin.php:651
 #, php-format
 msgid "%1$d symbols in the active sprite (%2$s)."
-msgstr ""
+msgstr "%1$d símbolos en el sprite activo (%2$s)."
 
 #: src/block/render.php:49
 #: build/block/index.js:1
 msgid "Select symbol …"
-msgstr ""
+msgstr "Seleccionar símbolo …"
 
 #: src/native/icons.php:412
 msgid "Icons from the configured SVG sprite."
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Could not load the icon sprite"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "All"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Replace"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Insert/edit link"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Remove link"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "SVG"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Aria label (for screen readers, when not linked)"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Sets the aria-label on the SVG. For links the aria-label is set on the <a>."
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Select symbol"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "View"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "Grid"
-msgstr ""
-
-#: build/block/index.js:1
-msgid "List"
-msgstr ""
+msgstr "Iconos del sprite SVG configurado."
 
 #: src/block/block.json
 msgctxt "block title"
 msgid "SVG Icon"
-msgstr ""
+msgstr "SVG Icon"
 
 #: src/block/block.json
 msgctxt "block description"
 msgid "Inserts an SVG icon from the plugin SVG Forge Icon Manager and can be linked."
-msgstr ""
+msgstr "Inserta un icono SVG del administrador SVG Forge del plugin y puede estar enlazado."
 
 #: src/block/block.json
 msgctxt "block keyword"
 msgid "icon"
-msgstr ""
+msgstr "icono"
 
 #: src/block/block.json
 msgctxt "block keyword"
 msgid "svg"
-msgstr ""
+msgstr "svg"
 
 #: src/block/block.json
 msgctxt "block keyword"
 msgid "symbol"
-msgstr ""
+msgstr "símbolo"
 
 #: src/block/block.json
 msgctxt "block keyword"
 msgid "sprite"
-msgstr ""
+msgstr "sprite"
+
+#: build/block/index.js:1
+msgid "Could not load the icon sprite"
+msgstr "No se pudo cargar el sprite de iconos"
+
+#: build/block/index.js:1
+msgid "All"
+msgstr "Todas"
+
+#: build/block/index.js:1
+msgid "Replace"
+msgstr "Reemplazar"
+
+#: build/block/index.js:1
+msgid "Insert/edit link"
+msgstr "Insertar/editar enlace"
+
+#: build/block/index.js:1
+msgid "Remove link"
+msgstr "Quitar enlace"
+
+#: build/block/index.js:1
+msgid "SVG"
+msgstr "SVG"
+
+#: build/block/index.js:1
+msgid "Aria label (for screen readers, when not linked)"
+msgstr "Etiqueta aria (para lectores de pantalla, cuando no está enlazado)"
+
+#: build/block/index.js:1
+msgid "Sets the aria-label on the SVG. For links the aria-label is set on the <a>."
+msgstr "Establece el aria-label en el SVG. Para los enlaces, el aria-label se establece en el <a>."
+
+#: build/block/index.js:1
+msgid "Select symbol"
+msgstr "Seleccionar símbolo"
+
+#: build/block/index.js:1
+msgid "View"
+msgstr "Vista"
+
+#: build/block/index.js:1
+msgid "Grid"
+msgstr "Cuadrícula"
+
+#: build/block/index.js:1
+msgid "List"
+msgstr "Lista"

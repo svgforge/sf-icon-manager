@@ -1,0 +1,330 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SVG Forge Icon Manager 0.3.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sf-icon-manager\n"
+"Last-Translator: svgforge <https://github.com/svgforge>\n"
+"Language-Team: Hindi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-19T14:08:52+02:00\n"
+"PO-Revision-Date: 2026-09-19 14:40+0200\n"
+"Language: hi_IN\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: sf-icon-manager\n"
+
+#. Plugin Name of the plugin
+#: sf-icon-manager.php
+#: src/admin/admin.php:18
+#: src/admin/admin.php:19
+#: src/admin/admin.php:288
+#: src/native/icons.php:411
+msgid "SVG Forge Icon Manager"
+msgstr "एसवीजी फोर्ज आइकन प्रबंधक"
+
+#. Description of the plugin
+#: sf-icon-manager.php
+msgid "Gutenberg block that inserts SVG icons from a sprite file (ico.svg) via <use> and links them."
+msgstr "गूटेनबर्ग ब्लॉक जो <use> के माध्यम से स्प्राइट फ़ाइल (ico.svg) से एसवीजी आइकन सम्मिलित करता है और उन्हें लिंक करता है।"
+
+#. Author of the plugin
+#: sf-icon-manager.php
+msgid "svgforge"
+msgstr "svgforge"
+
+#: src/admin/admin.php:127
+#: src/admin/admin.php:223
+#: src/admin/admin.php:248
+msgid "Sorry, you are not allowed to perform this action."
+msgstr "क्षमा करें, आपको यह कार्य करने की अनुमति नहीं है।"
+
+#: src/admin/admin.php:292
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+#: src/admin/admin.php:295
+#: src/admin/admin.php:647
+msgid "Sprite preview"
+msgstr "स्प्राइट पूर्वावलोकन"
+
+#: src/admin/admin.php:329
+msgid "Filter sfim_sprite_url"
+msgstr "फ़िल्टर sfim_sprite_url"
+
+#: src/admin/admin.php:333
+msgid "Upload (Settings)"
+msgstr "अपलोड (सेटिंग्स)"
+
+#: src/admin/admin.php:338
+msgid "Default (sprite.svg bundled with the plugin)"
+msgstr "डिफ़ॉल्ट (प्लगइन के साथ बंडल किया गया sprite.svg)"
+
+#: src/admin/admin.php:343
+msgid "The SVG sprite file was uploaded and is now being used."
+msgstr "एसवीजी स्प्राइट फ़ाइल अपलोड हो गई है और अब उपयोग की जा रही है।"
+
+#: src/admin/admin.php:344
+msgid "The uploaded SVG sprite file was removed."
+msgstr "अपलोड की गई एसवीजी स्प्राइट फ़ाइल हटा दी गई।"
+
+#: src/admin/admin.php:345
+msgid "Only .svg or .svgz files can be uploaded."
+msgstr "केवल .svg या .svgz फ़ाइलें अपलोड की जा सकती हैं।"
+
+#: src/admin/admin.php:346
+msgid "The file could not be read."
+msgstr "फ़ाइल पढ़ी नहीं जा सकी।"
+
+#: src/admin/admin.php:347
+msgid "The file is not a valid SVG file."
+msgstr "फ़ाइल एक मान्य एसवीजी फ़ाइल नहीं है।"
+
+#: src/admin/admin.php:348
+msgid "The file could not be written."
+msgstr "फ़ाइल लिखी नहीं जा सकी।"
+
+#: src/admin/admin.php:349
+msgid "Uploading is disabled because the sprite file is overridden by the sfim_sprite_url filter."
+msgstr "अपलोड अक्षम है क्योंकि स्प्राइट फ़ाइल को sfim_sprite_url फ़िल्टर द्वारा ओवरराइड किया गया है।"
+
+#: src/admin/admin.php:350
+msgid "The native icon integration setting was saved."
+msgstr "नेटिव आइकन एकीकरण सेटिंग सहेजी गई।"
+
+#: src/admin/admin.php:367
+msgid "The sprite file is currently overridden by the sfim_sprite_url filter. Uploading a sprite file is disabled while the filter is active."
+msgstr "स्प्राइट फ़ाइल वर्तमान में sfim_sprite_url फ़िल्टर द्वारा ओवरराइड है। फ़िल्टर सक्रिय रहते हुए स्प्राइट फ़ाइल अपलोड अक्षम है।"
+
+#: src/admin/admin.php:371
+msgid "SVG fragment library"
+msgstr "एसवीजी फ़्रैगमेंट पुस्तकालय"
+
+#: src/admin/admin.php:373
+msgid "Upload an SVG sprite file that serves as the central SVG Forge Icon Manager for the SVG Icon block."
+msgstr "एक एसवीजी स्प्राइट फ़ाइल अपलोड करें जो एसवीजी आइकन ब्लॉक के लिए केंद्रीय एसवीजी फोर्ज आइकन प्रबंधक के रूप में कार्य करती है।"
+
+#: src/admin/admin.php:374
+msgid "Each icon is a <symbol id=\"my-icon\" viewBox=\"0 0 24 24\">…</symbol> element."
+msgstr "प्रत्येक आइकन एक <symbol id=\"my-icon\" viewBox=\"0 0 24 24\">…</symbol> तत्व है।"
+
+#. translators: %1$d: Number of symbols registered with the native WordPress icon API.
+#: src/admin/admin.php:384
+#, php-format
+msgid "WordPress 7.1+ only: %1$d symbol is also registered in the built-in Icon block and the wp/v2 icons REST API."
+msgid_plural "WordPress 7.1+ only: these %1$d symbols are also registered in the built-in Icon block and the wp/v2 icons REST API."
+msgstr[0] "केवल WordPress 7.1+: %1$d प्रतीक अंतर्निहित आइकन ब्लॉक और wp/v2 आइकन REST API में भी पंजीकृत है।"
+msgstr[1] "केवल WordPress 7.1+: ये %1$d प्रतीक अंतर्निहित आइकन ब्लॉक और wp/v2 आइकन REST API में भी पंजीकृत हैं।"
+
+#: src/admin/admin.php:396
+msgid "WordPress 7.1+ only: the built-in Icon block is disabled. Use the SVG Icon block instead."
+msgstr "केवल WordPress 7.1+: अंतर्निहित आइकन ब्लॉक अक्षम है। इसके स्थान पर एसवीजी आइकन ब्लॉक का उपयोग करें।"
+
+#: src/admin/admin.php:404
+msgid "Active sprite file"
+msgstr "सक्रिय स्प्राइट फ़ाइल"
+
+#: src/admin/admin.php:409
+msgid "Short URL:"
+msgstr "छोटा URL:"
+
+#. translators: %s: Source of the sprite URL (filter, upload, default).
+#: src/admin/admin.php:417
+#, php-format
+msgid "Source: %s"
+msgstr "स्रोत: %s"
+
+#: src/admin/admin.php:426
+msgid "Uploaded file"
+msgstr "अपलोड की गई फ़ाइल"
+
+#. translators: %1$d: Number of symbol elements, %2$s: Date of the upload.
+#: src/admin/admin.php:434
+#, php-format
+msgid "(%1$d symbols, uploaded on %2$s)"
+msgstr "(%1$d प्रतीक, %2$s को अपलोड किए गए)"
+
+#: src/admin/admin.php:445
+msgid "Remove uploaded file"
+msgstr "अपलोड की गई फ़ाइल हटाएँ"
+
+#: src/admin/admin.php:455
+#: src/admin/admin.php:467
+msgid "WordPress native icon integration (experimental)"
+msgstr "वर्डप्रेस नेटिव आइकन एकीकरण (प्रयोगात्मक)"
+
+#: src/admin/admin.php:457
+msgid "Only relevant on WordPress 7.1+ which ships the built-in Icon block and the wp/v2 icons REST API. Experimental — the API and its behavior may change with core updates."
+msgstr "केवल WordPress 7.1+ पर प्रासंगिक जो अंतर्निहित आइकन ब्लॉक और wp/v2 आइकन REST API के साथ आता है। प्रयोगात्मक — API और इसका व्यवहार कोर अपडेट के साथ बदल सकता है।"
+
+#: src/admin/admin.php:460
+msgid "Note: the native path applies the core Icon block’s strict SVG sanitizer, so multi-color icon sets (e.g. Tango) may render incorrectly or not at all. The SVG Icon block renders sprite symbols without restrictions and is not affected."
+msgstr "नोट: नेटिव मार्ग कोर आइकन ब्लॉक के सख्त एसवीजी सैनिटाइज़र को लागू करता है, इसलिए बहुरंगी आइकन सेट (जैसे टैंगो) गलत तरीके से या बिल्कुल प्रस्तुत नहीं हो सकते। एसवीजी आइकन ब्लॉक स्प्राइट प्रतीकों को बिना प्रतिबंधों के प्रस्तुत करता है और प्रभावित नहीं होता।"
+
+#: src/admin/admin.php:473
+msgid "Off"
+msgstr "बंद"
+
+#: src/admin/admin.php:476
+msgid "Default. The plugin does not touch the WordPress icon API; the built-in Icon block stays as in core."
+msgstr "डिफ़ॉल्ट। प्लगइन वर्डप्रेस आइकन API को नहीं छूता; अंतर्निहित आइकन ब्लॉक कोर के अनुसार रहता है।"
+
+#: src/admin/admin.php:482
+msgid "Off, and hide WordPress core icon block"
+msgstr "बंद, और वर्डप्रेस कोर आइकन ब्लॉक छिपाएँ"
+
+#: src/admin/admin.php:485
+msgid "Like Off, but the built-in core/icon block is deregistered in the block editor and on the frontend. Use the SVG Icon block instead."
+msgstr "बंद के समान, लेकिन अंतर्निहित core/icon ब्लॉक ब्लॉक संपादक और फ्रंटएंड में अ-पंजीकृत हो जाता है। इसके स्थान पर एसवीजी आइकन ब्लॉक का उपयोग करें।"
+
+#: src/admin/admin.php:491
+msgid "On"
+msgstr "चालू"
+
+#: src/admin/admin.php:494
+msgid "Every symbol of the configured sprite is registered as an icon in the sf-icon-manager collection — available in the built-in Icon block picker, the wp/v2 icons REST API and wp_get_icon()."
+msgstr "कॉन्फ़िगर किए गए स्प्राइट का प्रत्येक प्रतीक sf-icon-manager संग्रह में एक आइकन के रूप में पंजीकृत है — अंतर्निहित आइकन ब्लॉक पिकर, wp/v2 आइकन REST API और wp_get_icon() में उपलब्ध।"
+
+#: src/admin/admin.php:501
+msgid "Save native icon settings"
+msgstr "नेटिव आइकन सेटिंग्स सहेजें"
+
+#: src/admin/admin.php:507
+msgid "Upload new file"
+msgstr "नई फ़ाइल अपलोड करें"
+
+#: src/admin/admin.php:509
+msgid "An existing uploaded file is replaced by a new upload."
+msgstr "मौजूदा अपलोड की गई फ़ाइल को नई अपलोड से बदल दिया जाता है।"
+
+#: src/admin/admin.php:518
+msgid "SVG file (ico.svg)"
+msgstr "एसवीजी फ़ाइल (ico.svg)"
+
+#: src/admin/admin.php:522
+msgid "Only .svg and .svgz files are accepted. svgforge-cli handles full sanitization and svgo optimization; as a safety net, the plugin strips scripts, event handlers and javascript: links on upload."
+msgstr "केवल .svg और .svgz फ़ाइलें स्वीकार की जाती हैं। svgforge-cli पूर्ण सैनिटाइज़ेशन और svgo अनुकूलन संभालता है; सुरक्षा जाल के रूप में, प्लगइन अपलोड पर स्क्रिप्ट, ईवेंट हैंडलर और javascript: लिंक हटा देता है।"
+
+#: src/admin/admin.php:530
+msgid "Upload SVG sprite"
+msgstr "एसवीजी स्प्राइट अपलोड करें"
+
+#: src/admin/admin.php:535
+msgid "Generate a sprite with svgforge-cli"
+msgstr "svgforge-cli से स्प्राइट बनाएँ"
+
+#. translators: %1$s: opening link to the svgforge-cli repository; %2$s: closing link tag.
+#: src/admin/admin.php:540
+#, php-format
+msgid "%1$sInstall svgforge-cli%2$s and create a symbol sprite from a folder of icons, then upload the generated SVG file."
+msgstr "%1$ssvgforge-cli स्थापित करें%2$s और आइकनों के फ़ोल्डर से एक सिंबल स्प्राइट बनाएँ, फिर उत्पन्न एसवीजी फ़ाइल अपलोड करें।"
+
+#: src/admin/admin.php:549
+msgid "SVG files in subdirectories get IDs like directory--filename — each directory is then available as a filter in the icon picker."
+msgstr "उपनिर्देशिकाओं में एसवीजी फ़ाइलों को directory--filename जैसे ID मिलते हैं — प्रत्येक निर्देशिका तब आइकन पिकर में एक फ़िल्टर के रूप में उपलब्ध होती है।"
+
+#. translators: %1$s: opening link to the svgforge tutorials; %2$s: closing link tag; %3$s: opening link to the example icon set repository; %4$s: closing link tag.
+#: src/admin/admin.php:555
+#, php-format
+msgid "Tutorials: %1$ssvgforge.github.io%2$s · Example icon set with generated sprite: %3$ssvgforge/default-icons%4$s"
+msgstr "ट्यूटोरियल: %1$ssvgforge.github.io%2$s · उत्पन्न स्प्राइट के साथ उदाहरण आइकन सेट: %3$ssvgforge/default-icons%4$s"
+
+#: src/admin/admin.php:638
+msgid "No sprite is configured yet. Go to the settings tab to upload an SVG sprite file."
+msgstr "अभी तक कोई स्प्राइट कॉन्फ़िगर नहीं है। एसवीजी स्प्राइट फ़ाइल अपलोड करने के लिए सेटिंग्स टैब पर जाएँ।"
+
+#: src/admin/admin.php:640
+msgid "The configured sprite contains no symbols that can be previewed."
+msgstr "कॉन्फ़िगर किए गए स्प्राइट में ऐसे कोई प्रतीक नहीं हैं जिनका पूर्वावलोकन किया जा सके।"
+
+#. translators: %1$d: Number of previewed symbols, %2$s: Active sprite URL.
+#: src/admin/admin.php:651
+#, php-format
+msgid "%1$d symbols in the active sprite (%2$s)."
+msgstr "सक्रिय स्प्राइट में %1$d प्रतीक (%2$s)।"
+
+#: src/block/render.php:49
+#: build/block/index.js:1
+msgid "Select symbol …"
+msgstr "सिंबल चुनें …"
+
+#: src/native/icons.php:412
+msgid "Icons from the configured SVG sprite."
+msgstr "कॉन्फ़िगर किए गए एसवीजी स्प्राइट से आइकन।"
+
+#: src/block/block.json
+msgctxt "block title"
+msgid "SVG Icon"
+msgstr "एसवीजी आइकन"
+
+#: src/block/block.json
+msgctxt "block description"
+msgid "Inserts an SVG icon from the plugin SVG Forge Icon Manager and can be linked."
+msgstr "प्लगइन एसवीजी फोर्ज आइकन प्रबंधक से एक एसवीजी आइकन सम्मिलित करता है और लिंक किया जा सकता है।"
+
+#: src/block/block.json
+msgctxt "block keyword"
+msgid "icon"
+msgstr "आइकन"
+
+#: src/block/block.json
+msgctxt "block keyword"
+msgid "svg"
+msgstr "svg"
+
+#: src/block/block.json
+msgctxt "block keyword"
+msgid "symbol"
+msgstr "सिंबल"
+
+#: src/block/block.json
+msgctxt "block keyword"
+msgid "sprite"
+msgstr "स्प्राइट"
+
+#: build/block/index.js:1
+msgid "Could not load the icon sprite"
+msgstr "आइकन स्प्राइट लोड नहीं किया जा सका"
+
+#: build/block/index.js:1
+msgid "All"
+msgstr "सभी"
+
+#: build/block/index.js:1
+msgid "Replace"
+msgstr "बदलें"
+
+#: build/block/index.js:1
+msgid "Insert/edit link"
+msgstr "लिंक सम्मिलित करें/संपादित करें"
+
+#: build/block/index.js:1
+msgid "Remove link"
+msgstr "लिंक हटाएँ"
+
+#: build/block/index.js:1
+msgid "SVG"
+msgstr "एसवीजी"
+
+#: build/block/index.js:1
+msgid "Aria label (for screen readers, when not linked)"
+msgstr "एरिया लेबल (स्क्रीन रीडर के लिए, जब लिंक न हो)"
+
+#: build/block/index.js:1
+msgid "Sets the aria-label on the SVG. For links the aria-label is set on the <a>."
+msgstr "एसवीजी पर aria-label निर्धारित करता है। लिंक के लिए aria-label <a> पर निर्धारित होता है।"
+
+#: build/block/index.js:1
+msgid "Select symbol"
+msgstr "सिंबल चुनें"
+
+#: build/block/index.js:1
+msgid "View"
+msgstr "दृश्य"
+
+#: build/block/index.js:1
+msgid "Grid"
+msgstr "ग्रिड"
+
+#: build/block/index.js:1
+msgid "List"
+msgstr "सूची"

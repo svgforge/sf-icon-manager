@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2026-09-19 13:40+0200",
+    "translation-revision-date": "2026-09-19 14:10+0200",
     "generator": "WP-CLI\/2.12.0",
     "source": "build\/block\/index.js",
     "domain": "messages",
@@ -7,44 +7,44 @@
         "messages": {
             "": {
                 "domain": "messages",
-                "lang": "de_DE",
-                "plural-forms": "nplurals=2; plural=(n != 1);"
+                "lang": "fr_FR",
+                "plural-forms": "nplurals=2; plural=(n > 1);"
             },
             "Select symbol \u2026": [
-                "Symbol w\u00e4hlen \u2026"
+                "S\u00e9lectionner un symbole \u2026"
             ],
             "Could not load the icon sprite": [
-                "Icon-Sprite konnte nicht geladen werden"
+                "Impossible de charger le sprite d'ic\u00f4nes"
             ],
             "All": [
-                "Alle"
+                "Toutes"
             ],
             "Replace": [
-                "Ersetzen"
+                "Remplacer"
             ],
             "Insert\/edit link": [
-                "Link einf\u00fcgen\/bearbeiten"
+                "Ins\u00e9rer\/modifier le lien"
             ],
             "Remove link": [
-                "Link entfernen"
+                "Supprimer le lien"
             ],
             "SVG": [
                 "SVG"
             ],
             "Aria label (for screen readers, when not linked)": [
-                "Aria-Label (f\u00fcr Screenreader, wenn nicht verlinkt)"
+                "\u00c9tiquette aria (pour les lecteurs d'\u00e9cran, lorsqu'il n'y a pas de lien)"
             ],
             "Sets the aria-label on the SVG. For links the aria-label is set on the <a>.": [
-                "Setzt das aria-label auf dem SVG. Bei Links wird das aria-label auf dem <a> gesetzt."
+                "D\u00e9finit l'attribut aria-label sur le SVG. Pour les liens, l'attribut aria-label est d\u00e9fini sur <a>."
             ],
             "Select symbol": [
-                "Symbol w\u00e4hlen"
+                "S\u00e9lectionner un symbole"
             ],
             "View": [
-                "Ansicht"
+                "Vue"
             ],
             "Grid": [
-                "Raster"
+                "Grille"
             ],
             "List": [
                 "Liste"
