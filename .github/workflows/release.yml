@@ -62,12 +62,17 @@ jobs:
             - name: Build plugin ZIP
               run: pnpm run plugin-zip
 
+            - name: Resolve plugin version
+              id: version
+              run: echo "version=$(sed -n 's/^Stable tag:[[:space:]]*//p' readme.txt)" >> "$GITHUB_OUTPUT"
+
             - name: Deploy to WordPress.org
               if: ${{ vars.WP_ORG_DEPLOY == '1' }}
               uses: 10up/action-wordpress-plugin-deploy@stable
               with:
                   generate-zip: true
               env:
+                  VERSION: ${{ steps.version.outputs.version }}
                   SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
                   SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
 
