@@ -76,7 +76,7 @@ jobs:
               if: ${{ vars.WP_ORG_DEPLOY == '1' }}
               uses: 10up/action-wordpress-plugin-deploy@stable
               with:
-                  generate-zip: true
+                  generate-zip: false
               env:
                   BUILD_DIR: ${{ github.workspace }}/deploy/sf-icon-manager
                   VERSION: ${{ steps.version.outputs.version }}
