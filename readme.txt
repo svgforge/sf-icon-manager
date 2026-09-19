@@ -90,18 +90,16 @@ Yes. The frontend markup is generated server-side in `render.php`; the built JS 
 
 Put the block's color settings into your theme's `theme.json`:
 
-[sourcecode]
-{
-    "version": 3,
-    "settings": {
-        "blocks": {
-            "sf-icon-manager/svg-icon": {
-                "color": { "custom": false, "palette": [] }
+    {
+        "version": 3,
+        "settings": {
+            "blocks": {
+                "sf-icon-manager/svg-icon": {
+                    "color": { "custom": false, "palette": [] }
+                }
             }
         }
     }
-}
-[/sourcecode]
 
 That removes the standard Gutenberg Color/Background panels for the SVG Icon block. As in the core Icon block, multi-color icons (e.g. Tango icon sets) keep their baked-in colors and are not affected by the color controls; monochrome icons follow the chosen color.
 
@@ -109,24 +107,22 @@ That removes the standard Gutenberg Color/Background panels for the SVG Icon blo
 
 The size is the standard Gutenberg Dimensions panel (`supports.dimensions.width`, like the core Icon block): the block is square, and size presets are standard theme.json `dimensionSizes` per block:
 
-[sourcecode]
-{
-    "version": 3,
-    "settings": {
-        "blocks": {
-            "sf-icon-manager/svg-icon": {
-                "dimensions": {
-                    "dimensionSizes": [
-                        { "name": "S", "slug": "s", "size": "32px" },
-                        { "name": "L", "slug": "l", "size": "64px" }
-                    ],
-                    "width": true
+    {
+        "version": 3,
+        "settings": {
+            "blocks": {
+                "sf-icon-manager/svg-icon": {
+                    "dimensions": {
+                        "dimensionSizes": [
+                            { "name": "S", "slug": "s", "size": "32px" },
+                            { "name": "L", "slug": "l", "size": "64px" }
+                        ],
+                        "width": true
+                    }
                 }
             }
         }
     }
-}
-[/sourcecode]
 
 With presets the panel shows a slider that moves across the preset sizes, like the core Icon block. A toggle next to it switches to a custom value input with a slider, using the allowed units (`spacing.units`). `dimensions.width: false` disables sizing entirely, so the block always renders at its default size.
 
