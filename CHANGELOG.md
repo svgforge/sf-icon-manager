@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-09-30
+
 ### Removed
 
 - The experimental WordPress 7.1 native icon integration (icon collection, `wp_get_icon()` support). Core's SVG sanitizer was too strict for real sprite libraries.
@@ -15,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - WordPress' own Icon block can now be removed with a checkbox ("Disable the WordPress core Icon block"), which replaces the old "Off + disable core Icon block" mode. It only affects the editor, not the frontend.
 - `sfim_url_to_path()`, `sfim_sprite_content()` and `sfim_sprite_symbols()` moved to `src/sprite.php`.
+- Readme leads with the plugin's advantages: no external CSS or JavaScript on the frontend, W3C-standard SVG fragments.
+- Updated npm dependencies; the test suite now runs on Vitest.
 
 ### Added
 
