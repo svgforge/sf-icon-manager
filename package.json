@@ -11,7 +11,6 @@
 		"composer.json",
 		"languages/*.pot",
 		"src/admin",
-		"src/native",
 		"src/sprite.php",
 		"src/short-url.php",
 		"vendor/autoload.php",
@@ -22,7 +21,8 @@
 		"vendor/enshrined",
 		"sprite.svg",
 		"readme.txt",
-		"sf-icon-manager.php"
+		"sf-icon-manager.php",
+		"uninstall.php"
 	],
 	"packageManager": "pnpm@12.4.1",
 	"scripts": {

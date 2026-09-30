@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Removed
+
+- The experimental WordPress 7.1 native icon integration (icon collection, `wp_get_icon()` support). Core's SVG sanitizer was too strict for real sprite libraries.
+
+### Changed
+
+- WordPress' own Icon block can now be removed with a checkbox ("Disable the WordPress core Icon block"), which replaces the old "Off + disable core Icon block" mode. It only affects the editor, not the frontend.
+- `sfim_url_to_path()`, `sfim_sprite_content()` and `sfim_sprite_symbols()` moved to `src/sprite.php`.
+
+### Added
+
+- `uninstall.php` removes the plugin's own options on uninstall. The uploaded sprite file is kept.
+
 ## [0.3.4] - 2026-09-19
 
 ### Fixed

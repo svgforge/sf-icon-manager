@@ -208,8 +208,6 @@ function sfim_handle_sprite_upload(): void
         'symbols' => $svg_count,
     ]);
 
-    sfim_invalidate_native_icons();
-
     sfim_settings_redirect('uploaded');
 }
 add_action('admin_post_sfim_upload_sprite', 'sfim_handle_sprite_upload');
@@ -233,34 +231,28 @@ function sfim_handle_sprite_delete(): void
 
     delete_option(SFIM_SPRITE_OPTION);
 
-    sfim_invalidate_native_icons();
-
     sfim_settings_redirect('deleted');
 }
 add_action('admin_post_sfim_delete_sprite', 'sfim_handle_sprite_delete');
 
 /**
- * Handles the native icon integration mode selection.
+ * Handles the "hide the WordPress core Icon block" checkbox.
  */
-function sfim_handle_native_update(): void
+function sfim_handle_icon_block_update(): void
 {
     if (! current_user_can('manage_options')) {
         wp_die(esc_html__('Sorry, you are not allowed to perform this action.', 'sf-icon-manager'));
     }
 
-    check_admin_referer('sfim_update_native');
+    check_admin_referer('sfim_update_icon_block');
 
-    $value = sanitize_key(wp_unslash((string) ($_POST['sfim_native'] ?? 'off')));
+    // A checkbox that is not checked is not submitted at all, so its absence
+    // means "off". The value is derived here, never taken from the request.
+    update_option(SFIM_HIDE_CORE_ICON_BLOCK_OPTION, isset($_POST['sfim_hide_core_icon_block']) ? '1' : '0');
 
-    if (! in_array($value, ['off', 'on', 'no_block'], true)) {
-        $value = 'off';
-    }
-
-    update_option(SFIM_NATIVE_OPTION, $value);
-
-    sfim_settings_redirect('native_updated');
+    sfim_settings_redirect('icon_block_updated');
 }
-add_action('admin_post_sfim_update_native', 'sfim_handle_native_update');
+add_action('admin_post_sfim_update_icon_block', 'sfim_handle_icon_block_update');
 
 /**
  * Renders the settings page with its tabs (settings and sprite preview).
@@ -308,7 +300,7 @@ function sfim_settings_page(): void
 }
 
 /**
- * Renders the settings panel (sprite upload and native icon integration).
+ * Renders the settings panel (sprite upload and core Icon block switch).
  */
 function sfim_settings_panel(): void
 {
@@ -347,7 +339,7 @@ function sfim_settings_panel(): void
         'error_invalid' => ['error', __('The file is not a valid SVG file.', 'sf-icon-manager')],
         'error_write' => ['error', __('The file could not be written.', 'sf-icon-manager')],
         'error_filter_active' => ['error', __('Uploading is disabled because the sprite file is overridden by the sfim_sprite_url filter.', 'sf-icon-manager')],
-        'native_updated' => ['success', __('The native icon integration setting was saved.', 'sf-icon-manager')],
+        'icon_block_updated' => ['success', __('The core Icon block setting was saved.', 'sf-icon-manager')],
     ];
 
     // phpcs:disable WordPress.Security.NonceVerification -- Read-only display state (action message). The key is sanitized with sanitize_key() and looked up against a fixed allowlist.
@@ -373,29 +365,10 @@ function sfim_settings_panel(): void
             <?php echo esc_html__('Upload an SVG sprite file that serves as the central SVG Forge Icon Manager for the SVG Icon block.', 'sf-icon-manager'); ?>
             <?php echo esc_html__('Each icon is a <symbol id="my-icon" viewBox="0 0 24 24">…</symbol> element.', 'sf-icon-manager'); ?>
         </p>
-<?php if (function_exists('wp_register_icon_collection')) : ?>
-            <?php $native_mode = sfim_native_setting(); ?>
-            <?php if ($native_mode === 'on') : ?>
-                <?php $native_icon_count = count(sfim_sprite_icons()); ?>
-                <p class="description" style="margin-top:.5em">
-                    <?php
-                    echo esc_html(sprintf(
-                        /* translators: %1$d: Number of symbols registered with the native WordPress icon API. */
-                        _n(
-                            'WordPress 7.1+ only: %1$d symbol is also registered in the built-in Icon block and the wp/v2 icons REST API.',
-                            'WordPress 7.1+ only: these %1$d symbols are also registered in the built-in Icon block and the wp/v2 icons REST API.',
-                            $native_icon_count,
-                            'sf-icon-manager',
-                        ),
-                        $native_icon_count,
-                    ));
-                ?>
-                </p>
-            <?php elseif ($native_mode === 'no_block') : ?>
-                <p class="description" style="margin-top:.5em">
-                    <?php echo esc_html__('WordPress 7.1+ only: the built-in Icon block is disabled. Use the SVG Icon block instead.', 'sf-icon-manager'); ?>
-                </p>
-            <?php endif; ?>
+        <?php if (sfim_core_icon_block_hidden()) : ?>
+        <p class="description" style="margin-top:.5em">
+            <?php echo esc_html__('The built-in WordPress core Icon block is disabled in the editor. Icons are inserted with the SVG Icon block instead.', 'sf-icon-manager'); ?>
+        </p>
         <?php endif; ?>
 
         <table class="form-table" role="presentation">
@@ -451,58 +424,30 @@ function sfim_settings_panel(): void
         </tbody>
         </table>
 
-        <?php if (function_exists('wp_register_icon_collection')) : ?>
-        <h2 style="margin-bottom:0"><?php echo esc_html__('WordPress native icon integration (experimental)', 'sf-icon-manager'); ?></h2>
+        <h2 style="margin-bottom:0"><?php echo esc_html__('WordPress core Icon block', 'sf-icon-manager'); ?></h2>
         <p class="description" style="margin-top:.5em">
-            <?php echo esc_html__('Only relevant on WordPress 7.1+ which ships the built-in Icon block and the wp/v2 icons REST API. Experimental — the API and its behavior may change with core updates.', 'sf-icon-manager'); ?>
-        </p>
-        <p class="description" style="margin-top:.5em">
-            <?php echo esc_html__('Note: the native path applies the core Icon block’s strict SVG sanitizer, so multi-color icon sets (e.g. Tango) may render incorrectly or not at all. The SVG Icon block renders sprite symbols without restrictions and is not affected.', 'sf-icon-manager'); ?>
+            <?php echo esc_html__('The built-in core/icon block takes its icons from the WordPress icon registry, not from your sprite file. Disable it to keep a single icon block.', 'sf-icon-manager'); ?>
         </p>
 
         <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-            <?php wp_nonce_field('sfim_update_native'); ?>
-            <input type="hidden" name="action" value="sfim_update_native">
+            <?php wp_nonce_field('sfim_update_icon_block'); ?>
+            <input type="hidden" name="action" value="sfim_update_icon_block">
             <fieldset>
-                <legend class="screen-reader-text"><?php echo esc_html__('WordPress native icon integration (experimental)', 'sf-icon-manager'); ?></legend>
-                <?php $native_mode = sfim_native_setting(); ?>
-                <ul>
-                    <li>
-                        <label>
-                            <input type="radio" name="sfim_native" value="off" <?php checked('off', $native_mode); ?>>
-                            <?php echo esc_html__('Off', 'sf-icon-manager'); ?>
-                        </label>
-                        <p class="description">
-                            <?php echo esc_html__('Default. The plugin does not touch the WordPress icon API; the built-in Icon block stays as in core.', 'sf-icon-manager'); ?>
-                        </p>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="radio" name="sfim_native" value="no_block" <?php checked('no_block', $native_mode); ?>>
-                            <?php echo esc_html__('Off, and hide WordPress core icon block', 'sf-icon-manager'); ?>
-                        </label>
-                        <p class="description">
-                            <?php echo esc_html__('Like Off, but the built-in core/icon block is deregistered in the block editor and on the frontend. Use the SVG Icon block instead.', 'sf-icon-manager'); ?>
-                        </p>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="radio" name="sfim_native" value="on" <?php checked('on', $native_mode); ?>>
-                            <?php echo esc_html__('On', 'sf-icon-manager'); ?>
-                        </label>
-                        <p class="description">
-                            <?php echo esc_html__('Every symbol of the configured sprite is registered as an icon in the sf-icon-manager collection — available in the built-in Icon block picker, the wp/v2 icons REST API and wp_get_icon().', 'sf-icon-manager'); ?>
-                        </p>
-                    </li>
-                </ul>
+                <legend class="screen-reader-text"><?php echo esc_html__('WordPress core Icon block', 'sf-icon-manager'); ?></legend>
+                <label for="sfim_hide_core_icon_block">
+                    <input type="checkbox" id="sfim_hide_core_icon_block" name="sfim_hide_core_icon_block" value="1" <?php checked(sfim_core_icon_block_hidden()); ?>>
+                    <?php echo esc_html__('Disable the WordPress core Icon block', 'sf-icon-manager'); ?>
+                </label>
+                <p class="description">
+                    <?php echo esc_html__('Removes the block in the block editor and from the block REST API (also for instances already saved in content). Stored content and its frontend output stay unchanged.', 'sf-icon-manager'); ?>
+                </p>
             </fieldset>
             <p class="submit">
                 <button type="submit" class="button button-primary">
-                    <?php echo esc_html__('Save native icon settings', 'sf-icon-manager'); ?>
+                    <?php echo esc_html__('Save Icon block setting', 'sf-icon-manager'); ?>
                 </button>
             </p>
         </form>
-        <?php endif; ?>
 
         <h2 style="margin-bottom:0"><?php echo esc_html__('Upload new file', 'sf-icon-manager'); ?></h2>
         <p class="description" style="margin-top:.5em">
@@ -564,12 +509,12 @@ function sfim_settings_panel(): void
 }
 
 /**
- * Groups parsed sprite icons by their directory prefix (e.g. 'actions--add_circle' → 'actions').
+ * Groups sprite symbols by their directory prefix (e.g. 'actions--add_circle' → 'actions').
  *
- * Icons whose ID does not contain the '--' separator form a trailing group with
- * an empty prefix (the group simply has no heading).
+ * Symbols whose ID does not contain the '--' separator form a trailing group
+ * with an empty prefix (the group simply has no heading).
  *
- * @param array[] $icons Icons as returned by sfim_sprite_icons().
+ * @param array[] $icons Icons as built from the ids of sfim_sprite_symbols().
  * @return array[] List of ['prefix' => string, 'icons' => array[]].
  */
 function sfim_sprite_preview_groups(array $icons): array
@@ -630,7 +575,7 @@ function sfim_sprite_preview_panel(): void
 
     $sprite     = sfim_current_sprite();
     $sprite_url = sfim_sprite_url();
-    $symbols    = function_exists('sfim_sprite_symbols') ? sfim_sprite_symbols() : [];
+    $symbols    = sfim_sprite_symbols();
 
     if ($symbols === []) {
         echo '<div class="notice notice-info"><p>';

@@ -42,9 +42,16 @@ if (is_admin()) {
 require_once __DIR__ . '/src/short-url.php';
 
 /**
- * Loads the WordPress 7.1 native icon API integration.
+ * Loads the switch that hides WordPress' own Icon block (core/icon) in the
+ * editing backend.
+ *
+ * Backend only: wp-admin requests, plus REST requests, because the block
+ * editor reads its settings through the REST API. Frontend page rendering
+ * never loads it, so the stored content keeps its previous frontend output.
  */
-require_once __DIR__ . '/src/native/icons.php';
+if (is_admin() || wp_is_json_request()) {
+    require_once __DIR__ . '/src/admin/hide-core-icon-block.php';
+}
 
 /**
  * Resolves the active SVG sprite source.
@@ -80,7 +87,7 @@ function sfim_current_sprite(): array
     if ($filtered !== '') {
         return [
             'url'    => $filtered,
-            'path'   => function_exists('sfim_url_to_path') ? sfim_url_to_path($filtered) : '',
+            'path'   => sfim_url_to_path($filtered),
             'source' => 'filter',
             'data'   => [],
         ];

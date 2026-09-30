@@ -1,4 +1,25 @@
-pnpm lint
-pnpm run typecheck
-pnpm run test-unit-js
-if [ -x vendor/bin/pint ]; then composer lint; fi
+# pnpm is installed outside the default PATH, so GUI git clients (VS Code) and
+# other minimal environments cannot resolve it. Fall back to the known
+# installation before giving up.
+PNPM=pnpm
+
+if ! command -v pnpm >/dev/null 2>&1; then
+    for candidate in "$HOME/.local/share/pnpm/bin/pnpm" "$HOME/.local/bin/pnpm" "$HOME/.local/share/pnpm/pnpm"; do
+        if [ -x "$candidate" ]; then
+            PNPM="$candidate"
+            break
+        fi
+    done
+fi
+
+if ! command -v "$PNPM" >/dev/null 2>&1 && [ ! -x "$PNPM" ]; then
+    echo "pre-commit: pnpm not found (install it or fix the PATH)" >&2
+    exit 1
+fi
+
+$PNPM lint
+$PNPM run typecheck
+$PNPM run test-unit-js
+
+# Pint is called directly, so composer does not have to be on the PATH.
+if [ -x vendor/bin/pint ]; then vendor/bin/pint --test; fi
