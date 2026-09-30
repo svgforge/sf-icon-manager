@@ -52,9 +52,13 @@ See [docs/release.md](release.md).
 ```
 sf-icon-manager/
 ├── sf-icon-manager.php      Plugin bootstrap (block registration, sprite URL, i18n)
+├── uninstall.php          Removes the plugin's own options on uninstall
 ├── docs/                  Documentation (this directory)
 ├── src/
 │   ├── admin/admin.php    Settings page (SVG upload), not part of the build
+│   ├── admin/hide-core-icon-block.php  Backend-only switch that removes core/icon
+│   ├── sprite.php         Sprite option and sprite file helpers
+│   ├── short-url.php      Short URL (/i.svg) rewrite and serving
 │   ├── block/             Block source code
 │   │   ├── block.json     Block metadata (apiVersion 3)
 │   │   ├── index.tsx      registerBlockType (TypeScript)

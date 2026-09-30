@@ -47,5 +47,7 @@ tests_add_filter('muplugins_loaded', '_sfim_manually_load_plugin');
 // Starts up the WordPress testing environment.
 require "{$sfim_wp_tests_dir}/bootstrap.php";
 
-// Admin-only module: make it explicit for tests that call upload/sanitizer helpers.
+// Admin-only modules: make them explicit for tests that call their helpers,
+// because the plugin only loads them for wp-admin and REST requests.
 require_once dirname(__DIR__) . '/src/admin/admin.php';
+require_once dirname(__DIR__) . '/src/admin/hide-core-icon-block.php';

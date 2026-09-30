@@ -29,6 +29,7 @@ Honest limitations:
 ## Features
 
 - Settings page (Settings → SVG Forge Icon Manager) for uploading the SVG sprite file, including sanitization of scripts and event handlers
+- Optional backend switch that removes WordPress' built-in Icon block (`core/icon`) from the editor, so the SVG Icon block is the only icon block while editing
 - Symbol picker in the editor with a live preview of all `<symbol>` elements from the sprite
 - Icons can be linked (new tab with `noopener`/`noreferrer`)
 - Aria-label for screen readers
@@ -85,21 +86,15 @@ add_filter( 'sfim_sprite_url', fn () => 'https://cdn.example.com/icons/ico.svg' 
 
 The filter is the only supported override mechanism and wins over everything, including a backend upload.
 
-## WordPress 7.1 native icon integration (experimental)
+## Hide the WordPress core Icon block
 
-On WordPress >= 7.1 the plugin can register every `<symbol>` of the configured sprite as an `sf-icon-manager` collection via `wp_register_icon()`. The same sprite then also powers the **core Icon block** and `wp_get_icon()`, in addition to the SVG Icon block.
+The built-in `core/icon` block takes its icons from the WordPress icon registry, not from your sprite file. On the settings page you can therefore remove it from the editing backend:
 
-> **Experimental:** this integration relies on the brand-new WordPress 7.1 icon API and core's strict sanitizer. The behavior may change as that API evolves; treat it as opt-in and test carefully.
+```text
+Settings → SVG Forge Icon Manager → WordPress core Icon block → Disable the WordPress core Icon block
+```
 
-The integration is controlled on the settings page ("WordPress native icon integration", default **Off**):
-
-- **Off**: nothing is registered natively (the fragment block works as before).
-- **On**: the sprite's symbols are registered as core Icon block icons. Registration is lazy — it only runs when the REST icon endpoints are called or a core Icon block renders, so plain page loads stay free of registration work regardless of the icon count.
-- **Off + disable the core Icon block**: same as Off, plus `core/icon` is truly deregistered — server-side (`unregister_block_type()`, it no longer appears in the block editor settings or the block-types REST API) and in the block editor itself (`wp.blocks.unregisterBlockType()`), so the block also stops working for instances already saved in content.
-
-Caveat: core's conservative sanitizer strips `stroke` and inline styles, so stroke-based sprite icons degrade to their fill shapes when consumed through the native path. The fragment block remains the primary experience; the core integration is a companion, not a replacement.
-
-**Performance:** none of the three modes slows down plain page loads. `off` (the default) does no native work at all, and `on` registers lazily — only when a REST icon endpoint is hit or a core Icon block renders — cached and idempotent per request. `no_block` only adds cheap registry guards. A frontend page that uses neither the core Icon block nor the REST icon routes never parses the sprite for the native path.
+When enabled, `core/icon` is removed server-side in the backend (`unregister_block_type()`, so it no longer appears in the block editor settings or in the block-types REST API) and in the block editor itself (`wp.blocks.unregisterBlockType()`). This is a backend-only switch: the frontend is not touched, and block markup that is already stored in content keeps rendering as before. Switch the option back on at any time. The SVG Icon block is unaffected.
 
 ## Block settings in theme.json
 

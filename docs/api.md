@@ -11,7 +11,7 @@ Public PHP functions, filters, and constants exposed by the SVG Forge Icon Manag
 - [Filters](#filters)
 - [Block Attribute Resolvers](#block-attribute-resolvers)
 - [Sprite Helpers](#sprite-helpers)
-- [Native Icon API (WordPress 7.1+)](#native-icon-api-wordpress-71)
+- [Core Icon Block](#core-icon-block)
 - [Constants](#constants)
 
 ---
@@ -225,18 +225,6 @@ add_filter('sfim_sprite_url', function ($url) {
 
 ---
 
-### `sfim_register_native_icons`
-
-**File:** `src/native/icons.php:391`
-
-Opt-out filter for the WordPress 7.1 native icon API registration. Return `false` to prevent icons from being registered, even when the native mode is set to `'on'`.
-
-```php
-add_filter('sfim_register_native_icons', '__return_false');
-```
-
----
-
 ## Block Attribute Resolvers
 
 These functions resolve Gutenberg's internal value formats (preset references, CSS custom properties) into usable CSS values. They are used by the server-side render callback but are also available for custom rendering.
@@ -314,7 +302,7 @@ $spacing = sfim_resolve_spacing('var:preset|spacing|30');
 
 ### `sfim_uploaded_sprite_data()`
 
-**File:** `src/sprite.php:20`
+**File:** `src/sprite.php:21`
 
 Returns the stored upload data from the `sfim_sprite` option.
 
@@ -336,7 +324,7 @@ $data = sfim_uploaded_sprite_data();
 
 ### `sfim_uploaded_sprite_url()`
 
-**File:** `src/sprite.php:36`
+**File:** `src/sprite.php:37`
 
 Returns just the URL of the uploaded sprite (`''` when none exists).
 
@@ -346,23 +334,9 @@ $url = sfim_uploaded_sprite_url();
 
 ---
 
-### `sfim_sprite_source_path()`
-
-**File:** `src/native/icons.php:84`
-
-Returns the local filesystem path of the active sprite source. Mirrors the same priority chain as `sfim_current_sprite()`.
-
-```php
-$path = sfim_sprite_source_path();
-// "/var/www/html/wp-content/uploads/sf-icon-manager/sprite.svg"
-// or '' for remote/CDN URLs
-```
-
----
-
 ### `sfim_url_to_path( string $url ): string`
 
-**File:** `src/native/icons.php:95`
+**File:** `src/sprite.php:50`
 
 Maps a URL to a local filesystem path when WordPress serves the file itself. Checks against `WP_CONTENT_DIR` and `ABSPATH`. Returns `''` for cross-origin or CDN URLs.
 
@@ -378,7 +352,7 @@ $path = sfim_url_to_path('https://cdn.example.com/icons.svg');
 
 ### `sfim_sprite_content()`
 
-**File:** `src/native/icons.php:133`
+**File:** `src/sprite.php:88`
 
 Returns the raw SVG markup of the active sprite. Reads from the local file when possible; fetches via `wp_remote_get` for remote filter-sourced URLs.
 
@@ -391,9 +365,9 @@ $svg = sfim_sprite_content();
 
 ### `sfim_sprite_symbols()`
 
-**File:** `src/native/icons.php:308`
+**File:** `src/sprite.php:121`
 
-Lists every `<symbol>` id from the active sprite. Unlike `sfim_sprite_icons()`, this returns the raw ids without applying core's shape allowlist — intended for `<use>` consumers where the browser resolves the full symbol.
+Lists every `<symbol>` id from the active sprite. Returns the raw ids, sorted alphabetically — intended for `<use>` consumers where the browser resolves the full symbol.
 
 ```php
 $ids = sfim_sprite_symbols();
@@ -402,99 +376,44 @@ $ids = sfim_sprite_symbols();
 
 ---
 
-## Native Icon API (WordPress 7.1+)
+## Core Icon Block
 
-Functions for integrating with the WordPress 7.1+ native icon API (`wp_register_icon`, `wp_register_icon_collection`).
+Functions behind the "Disable the WordPress core Icon block" switch on the settings page. They remove WordPress' built-in `core/icon` block (which does not read from the sprite file) from the editing backend, so the SVG Icon block is the only icon block while editing. All of them are no-ops while the switch is off.
 
-### `sfim_native_setting()`
+**Backend only.** `src/admin/hide-core-icon-block.php` is loaded for wp-admin requests and for REST requests (the block editor reads its settings through the REST API), never while a frontend page is rendered. Content that already contains `core/icon` therefore keeps its stored markup and its previous frontend output.
 
-**File:** `src/native/icons.php:52`
+### `sfim_core_icon_block_hidden(): bool`
 
-Returns the configured native icon integration mode.
+**File:** `src/admin/hide-core-icon-block.php:40`
 
-```php
-$mode = sfim_native_setting();
-// 'off' | 'on' | 'no_block'
-```
-
-| Mode | Behavior |
-|------|----------|
-| `'off'` | Default. Plugin does not touch the WordPress icon API. |
-| `'on'` | Every sprite symbol is registered with the native icon API. |
-| `'no_block'` | Like `'off'`, but the `core/icon` block is deregistered. |
-
----
-
-### `sfim_ensure_native_icons()`
-
-**File:** `src/native/icons.php:430`
-
-Public entry point: lazily ensures icons are registered with the native API. Safe to call from anywhere (themes, plugins, hooks). Does nothing on WordPress < 7.1.
+Returns whether the core Icon block is hidden in the backend. The option holds `'0'` (default) or `'1'`; every other value counts as off.
 
 ```php
-// Ensure icons are available before a custom REST endpoint
-add_action('rest_api_init', function () {
-    sfim_ensure_native_icons();
-    // … register custom routes
-});
+$hidden = sfim_core_icon_block_hidden();
+// false by default
 ```
 
----
+### `sfim_deregister_core_icon_block( mixed $block_name = 'core/icon' )`
 
-### `sfim_sprite_icons()`
+**File:** `src/admin/hide-core-icon-block.php:59`
 
-**File:** `src/native/icons.php:181`
-
-Returns parsed sprite icons with signature-based caching. Icons are rebuilt when the sprite source changes (different URL, mtime, or filesize).
+Deregisters a block type from the server-side block registry while the switch is on. Hooked late on `init`, `rest_api_init`, `admin_enqueue_scripts` and `enqueue_block_editor_assets`, because core registers block types lazily. The `$block_name` parameter is untyped on purpose: the function doubles as a hook callback, and those pass non-string values.
 
 ```php
-$icons = sfim_sprite_icons();
-
-foreach ($icons as $icon) {
-    // $icon['name']    → 'sf-icon-manager/arrow-down'
-    // $icon['label']   → 'arrow-down'
-    // $icon['content'] → '<svg xmlns="http://www.w3.org/2000/svg" viewBox="…">…</svg>'
-}
+sfim_deregister_core_icon_block('core/icon');
 ```
 
----
+### `sfim_deny_core_icon_block_types( mixed $allowed ): bool|array|null`
 
-### `sfim_parse_sprite_icons( string $svg ): array`
+**File:** `src/admin/hide-core-icon-block.php:92`
 
-**File:** `src/native/icons.php:214`
+Filter callback on `allowed_block_types_all`: removes `core/icon` from an explicit allowlist, or from the full registry when none is set, so the block never shows up in the inserter.
 
-Parses raw SVG markup into native icon definitions. Extracts `<path>` and `<polygon>` shapes, prunes disallowed attributes, and wraps each symbol in an `<svg>` root.
+### `sfim_hide_core_icon_block_editor_assets(): void`
 
-```php
-$icons = sfim_parse_sprite_icons($rawSvg);
-// Same structure as sfim_sprite_icons()
-```
+**File:** `src/admin/hide-core-icon-block.php:125`
 
----
-
-### `sfim_icon_slug( string $id ): string`
-
-**File:** `src/native/icons.php:68`
-
-Normalizes a sprite symbol id into a valid WordPress icon name (lowercase, alphanumeric + hyphens/underscores).
-
-```php
-$slug = sfim_icon_slug('My_Icon-Name');
-// → "my_icon-name"
-```
-
----
-
-### `sfim_invalidate_native_icons()`
-
-**File:** `src/native/icons.php:202`
-
-Clears the cached native icons option and resets the registration flag. Call this after replacing or modifying the sprite file.
-
-```php
-sfim_invalidate_native_icons();
-// Icons will be re-parsed on next access
-```
+Enqueues `assets/js/unregister-icon-block.js` while the switch is on, so `wp.blocks.unregisterBlockType('core/icon')` also removes the client-side block type in the editor.
 
 ---
 
@@ -503,6 +422,5 @@ sfim_invalidate_native_icons();
 | Constant | File | Value | Purpose |
 |----------|------|-------|---------|
 | `SFIM_PLUGIN_FILE` | `sf-icon-manager.php:17` | `__FILE__` | Path to the main plugin file |
-| `SFIM_SPRITE_OPTION` | `src/sprite.php:13` | `'sfim_sprite'` | Option key for uploaded sprite data |
-| `SFIM_ICONS_OPTION` | `src/native/icons.php:34` | `'sfim_icons'` | Option key for cached parsed icons |
-| `SFIM_NATIVE_OPTION` | `src/native/icons.php:45` | `'sfim_native'` | Option key for native integration mode |
+| `SFIM_SPRITE_OPTION` | `src/sprite.php:14` | `'sfim_sprite'` | Option key for uploaded sprite data |
+| `SFIM_HIDE_CORE_ICON_BLOCK_OPTION` | `src/admin/hide-core-icon-block.php:33` | `'sfim_hide_core_icon_block'` | Option key for the "hide core Icon block" switch ('0'/'1') |
