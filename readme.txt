@@ -9,46 +9,43 @@ Stable tag: 0.3.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-SVG Icon Block: inserts icons from your own SVG sprite via <use>, can link them. For developers who maintain their sprite file with CLI tools.
+SVG Icon Block: inserts icons from your own sprite via <use>. No frontend PHP, CSS or JS, and one static, cacheable SVG file for all icons.
 
 == Description ==
 
 The SVG Forge Icon Manager Block loads a central SVG sprite file (by default the bundled `i.svg`), shows all contained `<symbol>` elements in a convenient picker and inserts the selected icon as `<svg><use href="/i.svg#symbol-id">` into your content.
 
-The SVG sprite is a static [SVG fragment](https://css-tricks.com/svg-symbol-good-choice-icons/) file loaded by the browser via `<use>` — no JS on the frontend. Since you own the sprite file, every icon stays small, cacheable and fully under your control — exactly the way a hand-built icon set should be maintained.
+= Why another icon plugin? =
+
+* **A W3C standard:** every icon is referenced with the `<use>` element ([SVG 2](https://www.w3.org/TR/SVG2/struct.html#UseElement)). All current browsers support it — no polyfill, no build step.
+* **No frontend cost:** the plugin loads no external CSS or JavaScript. The browser fetches the sprite once and renders every icon from it.
+* **One cacheable file:** a static SVG file, fetched once and reused by every icon on the site.
+* **Full SVG survives:** stroke icons, gradients, `currentColor`, inline styles and custom `viewBox` values. WordPress 7.1's sanitizer allows only `<svg>`, `<path>` and `<polygon>` and breaks most stroke-based sets.
 
 = Who is this plugin for? =
 
-This plugin is primarily aimed at advanced theme and plugin developers. It does not give you a code-free icon manager: every icon must first exist as a `<symbol>` in a sprite file that you own, build and version.
+Developers who maintain their own sprite file. Every icon must exist as a `<symbol>` in a sprite you build and version — there is no icon manager UI.
 
-Since WordPress 7.1, core ships its own icon system (`wp_register_icon_collection()`, `wp_register_icon()`, `wp_get_icon()`): icons then automatically appear in the native Icon block's picker and in the REST API, and can be rendered directly in PHP. If you only need a few icons and can register them in code, use core instead — this plugin is then unnecessary.
-
-The fragment approach has advantages when you run a real sprite pipeline:
-
-* Full SVG via `<use>`: stroke-based icons, gradients, `currentColor`, inline styles and custom `viewBox` values survive. WordPress 7.1's sanitizer only allows `<svg>`, `<path>` and `<polygon>` (no `stroke`, no inline styles) and therefore breaks many stroke-based icon sets.
-* Reuse existing sprites: generate a sprite with svgforge-cli (sanitization + svgo optimization) and upload it — no per-icon PHP code required.
-* **Need a sprite?** Learn step by step how to build your own custom SVG icon set: [Creating custom icon sets with svgforge-cli](https://svgforge.github.io/blog/posts/custom-icon-sets/).
-* One file: the sprite is a single cacheable file that lives in the theme repo and is versioned with Git.
-* Cache friendly: the sprite is one static SVG file, so the browser caches it once and every icon on the whole site reuses that cached file — no per-icon HTTP requests.
-* Control per block: fill and stroke colours, size (standard Dimensions panel with preset slider + custom input), links with `rel` handling and aria-labels — per icon instance, without touching a stylesheet.
-* Also runs on WordPress versions before 7.1 (from 6.6).
-
-Limitations you should know about:
-
-* To add or change icons you have to rebuild the sprite file — typically with svgforge-cli, which handles sanitization and svgo optimization. There is no in-browser icon editor or management UI.
-* The icons live in your content as a block. There is no replacement for the simple `wp_get_icon()` helper in theme PHP — that is what the native 7.1 approach is for.
+WordPress 7.1 ships its own icon system (`wp_register_icon()`, `wp_get_icon()`). That is enough for a few icons registered in PHP. If you run a sprite, use this plugin: no frontend code, and it works on WordPress 6.6 and later.
 
 = Features =
 
-* Settings page (Settings → SVG Forge Icon Manager) to upload the SVG sprite file — svgforge-cli handles full sanitization and svgo optimization, the plugin strips scripts, event handlers and `javascript:` links as a safety net.
-* Theme override via the `sfim_sprite_url` filter (e.g. `get_theme_file_uri()`) – the filter has priority over everything.
-* Symbol picker in the editor with a live preview of all icons from the sprite; icons from sprite subdirectories (IDs like `directory--filename`) are grouped and selectable via a filter in the dropdown.
-* Icons can be linked (new tab + rel attributes including noopener/noreferrer).
-* Aria-label for screen readers; linked icons are automatically labelled via the link.
-* Fill and stroke colour as well as size per block (square, preset slider + custom input with units).
-* Fully dynamic server-side rendering (render.php) with `get_block_wrapper_attributes()`.
-* Block supports: alignment, anchor, additional CSS classes.
-* Optional backend switch that removes WordPress' built-in Icon block (`core/icon`) from the editor, so the SVG Icon block is the only icon block while editing.
+* Settings page to upload the sprite file (`.svg` or `.svgz`).
+* Uploaded sprites are sanitized with a strict allowlist: no scripts, no event handlers, no `foreignObject`, no unknown tags. Same engine as [Safe SVG](https://wordpress.org/plugins/safe-svg/).
+* Upload a sprite you already have, or build one with svgforge-cli.
+* `sfim_sprite_url` filter overrides the sprite file (e.g. `get_theme_file_uri()`).
+* Symbol picker in the editor with a live preview.
+* Icons from sprite subdirectories are grouped.
+* Icons can be linked (new tab, `rel` including `noopener`/`noreferrer`).
+* Aria-label for screen readers.
+* Fill and stroke colour as well as size per block.
+* Server-side rendering with `get_block_wrapper_attributes()`.
+* Alignment, anchor and additional CSS classes.
+* Optional switch to remove the core Icon block (`core/icon`) from the editor.
+
+= Honest limitations =
+
+* Adding or editing icons means rebuilding the sprite file — typically with [svgforge-cli](https://github.com/svgforge/svgforge-cli/).
 
 = Configure the sprite file =
 
@@ -66,7 +63,7 @@ or point it at a CDN:
 
     add_filter( 'sfim_sprite_url', fn () => 'https://cdn.example.com/icons/ico.svg' );
 
-SVG Forge Icon Manager is a developer-focused Gutenberg block that arranges a curated set of SVG icons as one central sprite and reuses them everywhere in your content. It works with any symbol sprite produced by modern build tools, is fully translated, and gives you precise control over colours, size, links and accessibility on every single block instance. The plugin prefers simplicity and performance: no tracking, no third-party requests, no page-weight overhead, and no vendor lock-in to a particular icon pack or service.
+If you have no sprite yet, this [tutorial walks you through building your own icon set](https://svgforge.github.io/blog/posts/custom-icon-sets/) step by step.
 
 == Installation ==
 
@@ -79,11 +76,11 @@ SVG Forge Icon Manager is a developer-focused Gutenberg block that arranges a cu
 
 = Where do the icons come from? =
 
-From the central sprite file `ico.svg`. Each icon is a `<symbol id="my-icon" viewBox="0 0 24 24">…</symbol>` element. The sprite is a static [SVG fragment](https://css-tricks.com/svg-symbol-good-choice-icons/) file that the browser loads as a regular SVG fragment.
+From the central sprite file `ico.svg`. Each icon is a `<symbol id="my-icon" viewBox="0 0 24 24">…</symbol>` element. The sprite is a plain static SVG file; the browser pulls single icons out of it with the `<use>` element ([SVG 2, W3C](https://www.w3.org/TR/SVG2/struct.html#UseElement)).
 
 = Why not simply use the native SVG icons of WordPress 7.1? =
 
-WordPress 7.1 offers a native icon system with `wp_register_icon_collection()` / `wp_register_icon()` / `wp_get_icon()` — that is enough if you register a few icons directly in code. This plugin complements that where a central SVG sprite is used: full SVG freedom (including stroke icons), existing sprites without per-icon PHP code, a single cacheable file and per-instance block styling.
+WordPress 7.1 offers a native icon system with `wp_register_icon_collection()` / `wp_register_icon()` / `wp_get_icon()` — that is enough if you register a few icons directly in code. With a central SVG sprite this plugin goes further: the icons are served as standard SVG fragments ([W3C specification](https://www.w3.org/TR/SVG2/struct.html#UseElement)) with no frontend PHP, CSS or JS, full SVG freedom (including stroke icons), existing sprites without per-icon PHP code, one cacheable file and per-instance block styling.
 
 = Can I remove the built-in Icon block? =
 
