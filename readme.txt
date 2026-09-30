@@ -5,7 +5,7 @@ Tags: svg, icons, sprite, gutenberg
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.3
-Stable tag: 0.3.4
+Stable tag: 0.4.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -140,10 +140,12 @@ Development is done on [GitHub](https://github.com/svgforge/sf-icon-manager).
 
 == Changelog ==
 
-= Unreleased =
+= 0.4.0 =
 * Removed the experimental WordPress 7.1 native icon integration: core's SVG sanitizer was too strict for real sprite libraries.
 * WordPress' own Icon block can now be removed with a checkbox ("Disable the WordPress core Icon block"). It only affects the editor, not the frontend.
 * Uninstalling the plugin now also removes its own settings. The uploaded sprite file is kept.
+* Readme leads with the plugin's advantages: no external CSS or JavaScript on the frontend, W3C-standard SVG fragments.
+* Updated npm dependencies; the test suite now runs on Vitest.
 
 = 0.3.4 =
 * Readme: clarified that the sprite is a static SVG fragment file loaded by the browser via `<use>` (no JS on the frontend), added the custom icon sets tutorial link and a "Cache friendly" selling point.
