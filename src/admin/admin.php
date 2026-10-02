@@ -35,19 +35,20 @@ function sfim_admin_assets(): void
         return;
     }
 
-    $path = dirname(SFIM_PLUGIN_FILE) . '/assets/css/admin.css';
+    $asset_path = SFIM_PLUGIN_DIR . '/assets/css/admin.css';
 
-    if (! is_file($path)) {
+    if (! is_readable($asset_path)) {
         return;
     }
 
-    wp_register_style(
+    $asset_version = filemtime($asset_path);
+
+    wp_enqueue_style(
         'sf-icon-manager-admin',
-        plugins_url('assets/css/admin.css', SFIM_PLUGIN_FILE),
+        SFIM_PLUGIN_URL . 'assets/css/admin.css',
         [],
-        (string) @filemtime($path),
+        $asset_version,
     );
-    wp_enqueue_style('sf-icon-manager-admin');
 }
 add_action('admin_enqueue_scripts', 'sfim_admin_assets');
 
