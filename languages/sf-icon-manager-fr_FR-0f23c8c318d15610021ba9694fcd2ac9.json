@@ -1,54 +1,34 @@
 {
-    "translation-revision-date": "2026-09-19 14:10+0200",
-    "generator": "WP-CLI\/2.12.0",
-    "source": "build\/block\/index.js",
-    "domain": "messages",
-    "locale_data": {
-        "messages": {
-            "": {
-                "domain": "messages",
-                "lang": "fr_FR",
-                "plural-forms": "nplurals=2; plural=(n > 1);"
-            },
-            "Select symbol \u2026": [
-                "S\u00e9lectionner un symbole \u2026"
-            ],
-            "Could not load the icon sprite": [
-                "Impossible de charger le sprite d'ic\u00f4nes"
-            ],
-            "All": [
-                "Toutes"
-            ],
-            "Replace": [
-                "Remplacer"
-            ],
-            "Insert\/edit link": [
-                "Ins\u00e9rer\/modifier le lien"
-            ],
-            "Remove link": [
-                "Supprimer le lien"
-            ],
-            "SVG": [
-                "SVG"
-            ],
-            "Aria label (for screen readers, when not linked)": [
-                "\u00c9tiquette aria (pour les lecteurs d'\u00e9cran, lorsqu'il n'y a pas de lien)"
-            ],
-            "Sets the aria-label on the SVG. For links the aria-label is set on the <a>.": [
-                "D\u00e9finit l'attribut aria-label sur le SVG. Pour les liens, l'attribut aria-label est d\u00e9fini sur <a>."
-            ],
-            "Select symbol": [
-                "S\u00e9lectionner un symbole"
-            ],
-            "View": [
-                "Vue"
-            ],
-            "Grid": [
-                "Grille"
-            ],
-            "List": [
-                "Liste"
-            ]
-        }
-    }
+	"translation-revision-date": "2026-09-19 14:10+0200",
+	"generator": "WP-CLI\/2.12.0",
+	"source": "build\/block\/index.js",
+	"domain": "messages",
+	"locale_data": {
+		"messages": {
+			"": {
+				"domain": "messages",
+				"lang": "fr_FR",
+				"plural-forms": "nplurals=2; plural=(n > 1);"
+			},
+			"Select symbol \u2026": [ "S\u00e9lectionner un symbole \u2026" ],
+			"Could not load the icon sprite": [
+				"Impossible de charger le sprite d'ic\u00f4nes"
+			],
+			"All": [ "Toutes" ],
+			"Replace": [ "Remplacer" ],
+			"Insert\/edit link": [ "Ins\u00e9rer\/modifier le lien" ],
+			"Remove link": [ "Supprimer le lien" ],
+			"SVG": [ "SVG" ],
+			"Aria label (for screen readers, when not linked)": [
+				"\u00c9tiquette aria (pour les lecteurs d'\u00e9cran, lorsqu'il n'y a pas de lien)"
+			],
+			"Sets the aria-label on the SVG. For links the aria-label is set on the <a>.": [
+				"D\u00e9finit l'attribut aria-label sur le SVG. Pour les liens, l'attribut aria-label est d\u00e9fini sur <a>."
+			],
+			"Select symbol": [ "S\u00e9lectionner un symbole" ],
+			"View": [ "Vue" ],
+			"Grid": [ "Grille" ],
+			"List": [ "Liste" ]
+		}
+	}
 }

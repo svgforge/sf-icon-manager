@@ -15,6 +15,8 @@
 defined('ABSPATH') || exit;
 
 defined('SFIM_PLUGIN_FILE') || define('SFIM_PLUGIN_FILE', __FILE__);
+define('SFIM_PLUGIN_DIR', plugin_dir_path(SFIM_PLUGIN_FILE));
+define('SFIM_PLUGIN_URL', plugin_dir_url(SFIM_PLUGIN_FILE));
 
 /**
  * Loads the shared sprite helpers (frontend + admin).
