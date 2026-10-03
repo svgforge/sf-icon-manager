@@ -23,6 +23,12 @@ define('SFIM_PLUGIN_URL', plugin_dir_url(SFIM_PLUGIN_FILE));
  */
 require_once __DIR__ . '/src/sprite.php';
 
+/**
+ * Loads the icon template helpers (frontend + admin), so themes can render
+ * sprite icons from their own PHP.
+ */
+require_once __DIR__ . '/src/icon.php';
+
 if (is_admin()) {
     /**
      * Loads the Composer autoloader (enshrined/svg-sanitize) for the admin

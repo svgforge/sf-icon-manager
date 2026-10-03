@@ -58,6 +58,7 @@ sf-icon-manager/
 │   ├── admin/admin.php    Settings page (SVG upload), not part of the build
 │   ├── admin/hide-core-icon-block.php  Backend-only switch that removes core/icon
 │   ├── sprite.php         Sprite option and sprite file helpers
+│   ├── icon.php           Icon template helpers (sfim_get_icon() for themes)
 │   ├── short-url.php      Short URL (/i.svg) rewrite and serving
 │   ├── block/             Block source code
 │   │   ├── block.json     Block metadata (apiVersion 3)

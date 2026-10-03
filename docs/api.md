@@ -11,6 +11,7 @@ Public PHP functions, filters, and constants exposed by the SVG Forge Icon Manag
 - [Filters](#filters)
 - [Block Attribute Resolvers](#block-attribute-resolvers)
 - [Sprite Helpers](#sprite-helpers)
+- [Icon Markup (Classic Themes)](#icon-markup-classic-themes)
 - [Core Icon Block](#core-icon-block)
 - [Constants](#constants)
 
@@ -372,6 +373,118 @@ Lists every `<symbol>` id from the active sprite. Returns the raw ids, sorted al
 ```php
 $ids = sfim_sprite_symbols();
 // ['arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', …]
+```
+
+---
+
+## Icon Markup (Classic Themes)
+
+### `sfim_get_icon( string $id, array $args = [] ): string`
+
+**File:** `src/icon.php:136`
+
+Renders one sprite icon as an `<svg><use></use></svg>` fragment — the same
+markup the SVG Icon block renders, so an icon looks identical in a template
+and in post content. The return value is fully escaped and can be echoed
+directly.
+
+```php
+// Decorative icon, sizes with the surrounding font (1em).
+echo sfim_get_icon('close');
+
+// Sized, coloured, labelled and linked.
+echo sfim_get_icon('close', [
+    'size'  => 20,
+    'label' => 'Close',
+    'link'  => get_permalink(),
+]);
+```
+
+**Arguments:**
+
+| Key | Type | Default | Purpose |
+|-----|------|---------|---------|
+| `size` | string | `'1em'` | Width and height. A bare number gets `px` appended, so `'20'` and `'20px'` are the same. |
+| `width` | string | `''` | Overrides `size` for the width. |
+| `height` | string | `''` | Overrides `size` for the height. |
+| `fill` | string | `'currentColor'` | Icon fill. `''` keeps the fill of the symbol itself (for multi-colour sprites). |
+| `color` | string | `''` | Text color; accepts theme palette presets (`vivid-red`). |
+| `background` | string | `''` | Background color; accepts theme palette presets. |
+| `padding` | string or array | `''` | Shorthand (`'4px'`) or per side (`['top' => '4px', 'left' => '2em']`). |
+| `class` | string or list | `''` | Extra class names on the `<svg>`, appended to `sfim-icon`. |
+| `label` | string | `''` | Accessible name. Without it the icon is `aria-hidden`. |
+| `link` | string | `''` | Wraps the icon in a link. |
+| `target` | string | `''` | Link target: `_blank`, `_self`, `_parent` or `_top`; anything else is ignored. |
+| `rel` | string | `''` | Link rel. `noopener noreferrer` are added automatically for `_blank`. |
+
+**Return value:** the icon markup, or `''` when the id is empty or no sprite
+is configured.
+
+**Styling:** the fragment carries its own size, fill and colors inline, so it
+needs no stylesheet — only the vertical alignment next to text is up to the
+theme:
+
+```css
+.my-icon {
+    vertical-align: -0.15em;
+}
+```
+
+**Accessibility:** a labelled icon gets `role="img"` plus `aria-label`; a
+labelled *linked* icon gets the label on the link and stays `aria-hidden`
+itself — the same model the block uses.
+
+---
+
+### `sfim_get_icon_href( string $id ): string`
+
+**File:** `src/icon.php:32`
+
+Builds the `<use>` href for one symbol: the resolved sprite URL (short URL,
+filter, upload or fallback) with the symbol as fragment. Returns a **raw,
+unescaped** value — pass it through `esc_url()` when you print it yourself.
+Returns `''` for an empty id or when no sprite is configured.
+
+```php
+echo '<svg style="width:20px;height:20px"><use href="'
+    . esc_url(sfim_get_icon_href('close')) . '"></use></svg>';
+```
+
+A fragment in the sprite URL from the `sfim_sprite_url` filter wins, exactly as
+in the block render. Symbol ids are percent-encoded, so ids with uppercase
+letters or dots keep working (the block normalizes them with
+`sanitize_key()`, because its ids come from post content).
+
+---
+
+### `sfim_icon_length( string $value ): string`
+
+**File:** `src/icon.php:63`
+
+Normalizes a size argument to a CSS length: a bare number gets `px` appended,
+everything else is passed through.
+
+```php
+sfim_icon_length('20');     // '20px'
+sfim_icon_length('2em');    // '2em'
+sfim_icon_length('50%');    // '50%'
+```
+
+---
+
+### `sfim_icon_padding_declarations( string|array $padding ): array`
+
+**File:** `src/icon.php:81`
+
+Converts the `padding` argument into CSS declarations. Useful when you build
+an icon yourself and want the same padding handling.
+
+```php
+sfim_icon_padding_declarations('4px');
+// ['padding' => '4px']
+
+sfim_icon_padding_declarations(['top' => '4px', 'right' => '', 'left' => '2em']);
+// ['padding-top' => '4px', 'padding-left' => '2em']
 ```
 
 ---

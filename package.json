@@ -11,6 +11,7 @@
 		"composer.json",
 		"languages/*.pot",
 		"src/admin",
+		"src/icon.php",
 		"src/sprite.php",
 		"src/short-url.php",
 		"vendor/autoload.php",

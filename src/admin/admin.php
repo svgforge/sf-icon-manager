@@ -617,7 +617,7 @@ function sfim_sprite_preview_panel(): void
 
             echo '<li title="' . esc_attr($id) . '">';
             echo '<div class="sf-icon-manager-sprite__icon">';
-            echo '<svg aria-hidden="true" focusable="false"><use href="' . esc_url(rtrim($sprite_url, '#') . '#' . $id) . '"></use></svg>';
+            echo '<svg aria-hidden="true" focusable="false"><use href="' . esc_url(sfim_get_icon_href($id)) . '"></use></svg>';
             echo '</div>';
             echo '<span class="sf-icon-manager-sprite__name">' . esc_html($id) . '</span>';
             echo '</li>';

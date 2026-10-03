@@ -12,6 +12,7 @@
 			<file>tests/Test_Icon_Library_Admin_Security.php</file>
 			<file>tests/Test_Icon_Library_Attribute_Resolvers.php</file>
 			<file>tests/Test_Icon_Library_Block_Render.php</file>
+			<file>tests/Test_Icon_Library_Get_Icon.php</file>
 			<file>tests/Test_Icon_Library_Hide_Core_Icon_Block.php</file>
 			<file>tests/Test_Icon_Library_Sanitize_Svg.php</file>
 			<file>tests/Test_Icon_Library_Short_Url.php</file>
