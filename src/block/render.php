@@ -50,16 +50,10 @@ if ($symbol_id === '') {
     return '';
 }
 
-// Sprite URL: filter, upload, or fallback.
-$sprite_base = function_exists('sfim_sprite_url')
-    ? sfim_sprite_url()
-    : plugins_url('sprite.svg', dirname(__DIR__, 2) . '/sf-icon-manager.php');
-
-if (strpos($sprite_base, '#') === false) {
-    $svg_href = esc_url(rtrim($sprite_base, '#') . '#' . $symbol_id);
-} else {
-    $svg_href = esc_url($sprite_base);
-}
+// Sprite href: short URL, filter, upload or fallback (sfim_get_icon_href()).
+$svg_href = function_exists('sfim_get_icon_href')
+    ? esc_url(sfim_get_icon_href($symbol_id))
+    : esc_url(plugins_url('sprite.svg', dirname(__DIR__, 2) . '/sf-icon-manager.php') . '#' . $symbol_id);
 
 $style = '';
 $style .= 'width:' . esc_attr($width) . ';height:' . esc_attr($height) . ';';

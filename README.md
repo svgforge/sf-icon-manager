@@ -31,6 +31,7 @@ WordPress 7.1 ships its own icon system (`wp_register_icon()`, `wp_get_icon()`).
 - Server-side rendering with `get_block_wrapper_attributes()`
 - Alignment, anchor and additional CSS classes
 - Optional remove the core Icon block (`core/icon`) from the editor
+- Icon helper for classic themes: `echo sfim_get_icon( 'close', [ 'size' => 20 ] );`
 
 ## Honest limitations
 
@@ -84,6 +85,34 @@ add_filter( 'sfim_sprite_url', fn () => 'https://cdn.example.com/icons/ico.svg' 
 ```
 
 The filter is the only supported override mechanism and wins over everything, including a backend upload.
+
+## Icons in theme templates
+
+Classic themes (and any other custom PHP) can print icons from the sprite without using the block:
+
+```php
+// Decorative icon: hidden from screen readers, sizes with the font (1em).
+echo sfim_get_icon( 'close' );
+
+// Sized, coloured, labelled and linked.
+echo sfim_get_icon( 'close', [
+	'size'  => 20,
+	'label' => 'Close',
+	'link'  => get_permalink(),
+] );
+```
+
+`sfim_get_icon()` returns the same `<svg><use>` fragment the block renders, so icons look identical in a template and in post content. It is a plain function of the plugin — no `require`, no `use`, just call it. Useful arguments: `size` (or `width`/`height`), `color`, `background`, `padding`, `class`, `label`, `link`, `target` and `rel`. Colors and spacings accept the same theme presets as the block (`'vivid-red'`, `'var:preset|spacing|30'`).
+
+Vertical alignment next to text is up to the theme, as usual for inline SVG:
+
+```css
+.my-icon {
+	vertical-align: -0.15em;
+}
+```
+
+Full argument list: [docs/api.md](docs/api.md#icon-markup-classic-themes).
 
 ## Hide the WordPress core Icon block
 

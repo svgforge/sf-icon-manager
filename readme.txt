@@ -21,6 +21,7 @@ The SVG Forge Icon Manager Block loads a central SVG sprite file (by default the
 * **No frontend cost:** the plugin loads no external CSS or JavaScript. The browser fetches the sprite once and renders every icon from it.
 * **One cacheable file:** a static SVG file, fetched once and reused by every icon on the site.
 * **Full SVG survives:** stroke icons, gradients, `currentColor`, inline styles and custom `viewBox` values. WordPress 7.1's sanitizer allows only `<svg>`, `<path>` and `<polygon>` and breaks most stroke-based sets.
+* **Classic Themes**: You can use php to output icons in your classic theme, `echo sfim_get_icon( 'icon-id' );`
 
 = Who is this plugin for? =
 
@@ -42,6 +43,7 @@ WordPress 7.1 ships its own icon system (`wp_register_icon()`, `wp_get_icon()`).
 * Server-side rendering with `get_block_wrapper_attributes()`.
 * Alignment, anchor and additional CSS classes.
 * Optional switch to remove the core Icon block (`core/icon`) from the editor.
+* Icon helper for classic themes: `echo sfim_get_icon( 'close', [ 'size' => 20 ] );`
 
 = Honest limitations =
 
@@ -64,6 +66,18 @@ or point it at a CDN:
     add_filter( 'sfim_sprite_url', fn () => 'https://cdn.example.com/icons/ico.svg' );
 
 If you have no sprite yet, this [tutorial walks you through building your own icon set](https://svgforge.github.io/blog/posts/custom-icon-sets/) step by step.
+
+= Icons in theme templates =
+
+Classic themes (and any other custom PHP) can print icons from the sprite without using the block:
+
+    // Decorative icon: hidden from screen readers, sizes with the font (1em).
+    echo sfim_get_icon( 'close' );
+
+    // Sized, labelled and linked.
+    echo sfim_get_icon( 'close', [ 'size' => 20, 'label' => 'Close', 'link' => get_permalink() ] );
+
+`sfim_get_icon()` returns the same `<svg><use>` fragment the block renders, so icons look identical in a template and in post content. It is a plain function of the plugin – no `require`, no `use`, just call it. Useful arguments: `size` (or `width`/`height`), `color`, `background`, `padding`, `class`, `label`, `link`, `target` and `rel`.
 
 == Installation ==
 
