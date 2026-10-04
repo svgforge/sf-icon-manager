@@ -125,18 +125,3 @@
 .svg-icon__picker-list--grid.svg-icon__picker-list--large {
 	grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
 }
-
-.svg-icon__toggle {
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
-}
-
-.svg-icon__toggle-icon {
-	width: 32px;
-	height: 32px;
-}
-
-.svg-icon__toggle-label {
-	font-size: 12px;
-}
