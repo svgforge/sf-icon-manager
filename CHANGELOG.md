@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Toolbar icons not focusable
+
 ### Added
 
 - `sfim_get_icon()` renders a sprite icon as an `<svg><use>` fragment from theme code, for classic themes and custom PHP: `echo sfim_get_icon( 'close', [ 'size' => 20, 'label' => 'Close' ] );`. Supports size, colors, padding, extra classes, an accessible label and an optional link, and accepts the same theme presets as the block. The block render and the sprite preview now share its `sfim_get_icon_href()` helper.

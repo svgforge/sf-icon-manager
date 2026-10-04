@@ -12,6 +12,7 @@ import { useDispatch } from '@wordpress/data';
 import {
 	PanelBody,
 	Modal,
+	Dashicon,
 	ToolbarGroup,
 	ToolbarButton,
 	Popover,
@@ -339,25 +340,25 @@ export default function Edit( {
 								label={ __( 'View', 'sf-icon-manager' ) }
 								value={ view }
 								hideLabelFromVision
-								onChange={ ( value ) =>
-									setView(
-										value === 'list' ? 'list' : 'grid'
-									)
-								}
+								isDeselectable
+								onChange={ ( value ) => {
+									if (
+										value === 'grid' ||
+										value === 'list'
+									) {
+										setView( value );
+									}
+								} }
 							>
 								<ToggleGroupControlOptionIcon
 									value="grid"
 									label={ __( 'Grid', 'sf-icon-manager' ) }
-									icon={
-										<span className="dashicons dashicons-grid-view" />
-									}
+									icon={ <Dashicon icon="grid-view" /> }
 								/>
 								<ToggleGroupControlOptionIcon
 									value="list"
 									label={ __( 'List', 'sf-icon-manager' ) }
-									icon={
-										<span className="dashicons dashicons-list-view" />
-									}
+									icon={ <Dashicon icon="list-view" /> }
 								/>
 							</ToggleGroupControl>
 						</div>

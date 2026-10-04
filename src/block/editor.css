@@ -2,7 +2,6 @@
 	padding: 8px;
 	width: 360px;
 	max-width: calc(100vw - 32px);
-	overflow-x: clip;
 }
 
 .svg-icon__modal .svg-icon__picker {
