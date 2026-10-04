@@ -88,6 +88,11 @@
 	max-width: 100%;
 }
 
+.svg-icon__picker-list--large .svg-icon__picker-icon {
+	width: 64px;
+	height: 64px;
+}
+
 .svg-icon__picker-label {
 	font-size: 12px;
 }
@@ -100,6 +105,10 @@
 	max-width: 100%;
 	box-sizing: border-box;
 	overflow-x: clip;
+}
+
+.svg-icon__picker-list--grid.svg-icon__picker-list--large {
+	grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
 }
 
 .svg-icon__toggle {
