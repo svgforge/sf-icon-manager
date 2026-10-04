@@ -5,11 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.5.0] - 2026-10-04
 
 ### Added
 
 - `sfim_get_icon()` renders a sprite icon as an `<svg><use>` fragment from theme code, for classic themes and custom PHP: `echo sfim_get_icon( 'close', [ 'size' => 20, 'label' => 'Close' ] );`. Supports size, colors, padding, extra classes, an accessible label and an optional link, and accepts the same theme presets as the block. The block render and the sprite preview now share its `sfim_get_icon_href()` helper.
+- Icon picker: a view-size toggle switches the icon preview between **Normal** and **Large** (double size).
+
+### Fixed
+
+- Icon picker: the toolbar buttons are now reachable with the keyboard (Tab) and focus the button itself instead of the whole group.
+- Icon picker: the toolbar no longer scrolls out of view, and the dialog no longer shows a second, nested scrollbar.
 
 ## [0.4.0] - 2026-09-30
 

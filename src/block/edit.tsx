@@ -12,6 +12,7 @@ import { useDispatch } from '@wordpress/data';
 import {
 	PanelBody,
 	Modal,
+	Dashicon,
 	ToolbarGroup,
 	ToolbarButton,
 	Popover,
@@ -174,6 +175,9 @@ export default function Edit( {
 
 	const [ activeGroup, setActiveGroup ] = useState( 'all' );
 	const [ view, setView ] = useState< 'grid' | 'list' >( 'grid' );
+	const [ iconSize, setIconSize ] = useState< 'normal' | 'large' >(
+		'normal'
+	);
 
 	const filteredOptions = useMemo< SymbolOption[] >( () => {
 		if ( activeGroup === 'all' ) {
@@ -339,30 +343,55 @@ export default function Edit( {
 								label={ __( 'View', 'sf-icon-manager' ) }
 								value={ view }
 								hideLabelFromVision
-								onChange={ ( value ) =>
-									setView(
-										value === 'list' ? 'list' : 'grid'
-									)
-								}
+								isDeselectable
+								onChange={ ( value ) => {
+									if (
+										value === 'grid' ||
+										value === 'list'
+									) {
+										setView( value );
+									}
+								} }
 							>
 								<ToggleGroupControlOptionIcon
 									value="grid"
 									label={ __( 'Grid', 'sf-icon-manager' ) }
-									icon={
-										<span className="dashicons dashicons-grid-view" />
-									}
+									icon={ <Dashicon icon="grid-view" /> }
 								/>
 								<ToggleGroupControlOptionIcon
 									value="list"
 									label={ __( 'List', 'sf-icon-manager' ) }
-									icon={
-										<span className="dashicons dashicons-list-view" />
+									icon={ <Dashicon icon="list-view" /> }
+								/>
+							</ToggleGroupControl>
+							<ToggleGroupControl
+								label={ __( 'Icon size', 'sf-icon-manager' ) }
+								value={ iconSize }
+								hideLabelFromVision
+								isDeselectable
+								onChange={ ( value ) => {
+									if (
+										value === 'normal' ||
+										value === 'large'
+									) {
+										setIconSize( value );
 									}
+								} }
+							>
+								<ToggleGroupControlOptionIcon
+									value="normal"
+									label={ __( 'Normal', 'sf-icon-manager' ) }
+									icon={ <Dashicon icon="minus" /> }
+								/>
+								<ToggleGroupControlOptionIcon
+									value="large"
+									label={ __( 'Large', 'sf-icon-manager' ) }
+									icon={ <Dashicon icon="plus" /> }
 								/>
 							</ToggleGroupControl>
 						</div>
 						<div
-							className={ `svg-icon__picker-list svg-icon__picker-list--${ view }` }
+							className={ `svg-icon__picker-list svg-icon__picker-list--${ view } svg-icon__picker-list--${ iconSize }` }
 						>
 							{ filteredOptions.map( ( opt ) => {
 								if ( view === 'grid' ) {

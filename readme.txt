@@ -5,7 +5,7 @@ Tags: svg, icons, sprite, gutenberg
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.3
-Stable tag: 0.4.0
+Stable tag: 0.5.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -153,6 +153,12 @@ With presets the panel shows a slider that moves across the preset sizes, like t
 Development is done on [GitHub](https://github.com/svgforge/sf-icon-manager).
 
 == Changelog ==
+
+= 0.5.0 =
+* `sfim_get_icon()` renders a sprite icon as an `<svg><use>` fragment from theme code, for classic themes and custom PHP (size, colors, padding, label, optional link and theme presets).
+* Icon picker: new view-size toggle between Normal and Large (double size) icon previews.
+* Icon picker: toolbar buttons are now reachable with the keyboard and focus the button itself.
+* Icon picker: the toolbar stays visible while scrolling and the dialog no longer shows a second scrollbar.
 
 = 0.4.0 =
 * Removed the experimental WordPress 7.1 native icon integration: core's SVG sanitizer was too strict for real sprite libraries.
