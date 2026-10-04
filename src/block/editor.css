@@ -10,9 +10,19 @@
 	padding: 0;
 }
 
-.svg-icon__modal .svg-icon__picker-list {
-	max-height: 60vh;
-	overflow-y: auto;
+/*
+ * The modal content has a 4px top padding, so the picker starts 4px below the
+ * scrollport. A sticky element can never move above its containing block, so
+ * the toolbar would stick 4px below the top and leave a see-through strip.
+ * Removing the padding lets it stick flush; its own padding keeps the spacing.
+ */
+.svg-icon__modal .components-modal__content {
+	padding-top: 0;
+}
+
+/* WordPress only colours the header border once the content is scrolled. */
+.svg-icon__modal .components-modal__header {
+	border-bottom-color: #dbdbdb;
 }
 
 .svg-icon__picker-toolbar {
@@ -20,6 +30,11 @@
 	align-items: center;
 	gap: 8px;
 	margin-bottom: 8px;
+	padding: 8px 0;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	background: #fff;
 }
 
 .svg-icon__group-select {
