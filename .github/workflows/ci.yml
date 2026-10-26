@@ -42,17 +42,11 @@ jobs:
             - name: Install PHP dependencies
               run: composer install --no-interaction --prefer-dist --no-progress
 
-            - name: Setup pnpm
-              uses: pnpm/action-setup@v6
-
-            - name: Setup Node.js
-              uses: actions/setup-node@v7
+            - name: Setup pnpm and Node.js
+              uses: pnpm/setup@v3
               with:
-                  node-version: 24
-                  cache: pnpm
-
-            - name: Install JS dependencies
-              run: pnpm install --frozen-lockfile
+                  cache: true
+                  require-lockfile: true
 
             # Needed so build/block/block.json exists for the block registration in tests.
             - name: Build block
@@ -91,17 +85,11 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v7
 
-            - name: Setup pnpm
-              uses: pnpm/action-setup@v6
-
-            - name: Setup Node.js
-              uses: actions/setup-node@v7
+            - name: Setup pnpm and Node.js
+              uses: pnpm/setup@v3
               with:
-                  node-version: 24
-                  cache: pnpm
-
-            - name: Install dependencies
-              run: pnpm install --frozen-lockfile
+                  cache: true
+                  require-lockfile: true
 
             - name: Lint JS
               run: pnpm run lint:js
